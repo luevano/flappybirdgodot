@@ -1,0 +1,39 @@
+class_name WorldTiles
+extends Node2D
+
+signal place_ground
+signal remove_ground
+signal place_pipe
+signal remove_pipe
+
+export(int, 2, 20, 2) var PIPE_SEP: int = 6
+
+onready var ground_tile_map: GroundTileMap = $GroundTileMap
+onready var pipe_tile_map: PipeTileMap = $PipeTileMap
+
+var tiles_since_last_pipe: int = PIPE_SEP - 1
+
+
+func _ready() -> void:
+    connect("place_ground", ground_tile_map, "_on_world_tiles_place_ground")
+    connect("remove_ground", ground_tile_map, "_on_world_tiles_remove_ground")
+    connect("place_pipe", pipe_tile_map, "_on_world_tiles_place_pipe")
+    connect("remove_pipe", pipe_tile_map, "_on_world_tiles_remove_pipe")
+
+
+func _on_world_detector_ground_stopped_colliding() -> void:
+    # _place_new_tiles()
+    emit_signal("place_ground")
+
+    tiles_since_last_pipe += 1
+    if tiles_since_last_pipe == PIPE_SEP:
+        emit_signal("place_pipe")
+        tiles_since_last_pipe = 0
+
+
+func _on_world_detector_ground_started_colliding() -> void:
+    emit_signal("remove_ground")
+
+
+func _on_world_detector_pipe_started_colliding() -> void:
+    emit_signal("remove_pipe")
