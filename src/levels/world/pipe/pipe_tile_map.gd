@@ -44,7 +44,7 @@ func _place_new_pipe() -> void:
 
     var detector: Area2D = detector_scene.instance()
     detector.position = map_to_world(new_pipe_starting_position) + detector_offset
-    detector.connect("body_entered", game, "_on_score_detector_body_entered")
+    detector.connect("body_entered", game, "_on_ScoreDetector_body_entered")
     detector_stack.append(detector)
     add_child(detector)
 
@@ -69,9 +69,9 @@ func _get_random_pipe() -> int:
     return randi() % PipePattern.size()
 
 
-func _on_world_tiles_place_pipe() -> void:
+func _on_WorldTiles_place_pipe() -> void:
     _place_new_pipe()
 
 
-func _on_world_tiles_remove_pipe() -> void:
+func _on_WorldTiles_remove_pipe() -> void:
     _remove_old_pipe()

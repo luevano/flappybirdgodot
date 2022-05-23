@@ -33,9 +33,9 @@ func _get_random_ground() -> int:
 	return randi() % (Ground.size() - 1)
 
 
-func _on_world_tiles_place_ground() -> void:
+func _on_WorldTiles_place_ground() -> void:
 	_place_new_ground()
 
 
-func _on_world_tiles_remove_ground() -> void:
+func _on_WorldTiles_remove_ground() -> void:
 	_remove_first_ground()

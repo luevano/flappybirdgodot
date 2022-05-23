@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/SilverScoreDynamicFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/SilverDynamicFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/ui.gd" type="Script" id=3]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+
+[node name="InfoContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 580.0
+margin_bottom = 780.0
+custom_constants/separation = 250
+
+[node name="ScoreContainer" type="VBoxContainer" parent="MarginContainer/InfoContainer"]
+margin_right = 580.0
+margin_bottom = 183.0
+
+[node name="Score" type="Label" parent="MarginContainer/InfoContainer/ScoreContainer"]
+margin_right = 580.0
+margin_bottom = 142.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 1
+
+[node name="HighScore" type="Label" parent="MarginContainer/InfoContainer/ScoreContainer"]
+margin_top = 146.0
+margin_right = 580.0
+margin_bottom = 183.0
+custom_fonts/font = ExtResource( 2 )
+text = "High score: 0"
+align = 1
+
+[node name="StartGame" type="Label" parent="MarginContainer/InfoContainer"]
+margin_top = 433.0
+margin_right = 580.0
+margin_bottom = 470.0
+custom_fonts/font = ExtResource( 2 )
+text = "Press space to start"
+align = 1
+
+[node name="DebugContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 580.0
+margin_bottom = 780.0
+
+[node name="FPS" type="Label" parent="MarginContainer/DebugContainer"]
+margin_right = 580.0
+margin_bottom = 14.0
+
+[node name="VersionContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 580.0
+margin_bottom = 780.0
+alignment = 2
+
+[node name="Version" type="Label" parent="MarginContainer/VersionContainer"]
+margin_top = 766.0
+margin_right = 580.0
+margin_bottom = 780.0
+align = 2

@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://entities/actors/player/player.gd"
 }, {
+"base": "CanvasLayer",
+"class": "UI",
+"language": "GDScript",
+"path": "res://ui/ui.gd"
+}, {
 "base": "Node2D",
 "class": "WorldDetector",
 "language": "GDScript",
@@ -50,16 +55,24 @@ _global_script_class_icons={
 "Main": "",
 "PipeTileMap": "",
 "Player": "",
+"UI": "",
 "WorldDetector": "",
 "WorldTiles": ""
 }
 
 [application]
 
-config/name="FlappyBird"
+config/name="FlappyBirdGodot"
+config/description="FlappyBird clone made in Godot."
 run/main_scene="res://Main.tscn"
 config/icon="res://icons/game.png"
+config/windows_native_icon="res://icons/game.ico"
 config/game_scale=3.0
+config/version="1.0.0"
+
+[autoload]
+
+SavedData="*res://saved_data.gd"
 
 [debug]
 
@@ -71,6 +84,8 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=600
 window/size/height=800
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gui]
 
@@ -89,6 +104,16 @@ texture={
 jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+toggle_debug={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
+restart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -15,13 +15,13 @@ var tiles_since_last_pipe: int = PIPE_SEP - 1
 
 
 func _ready() -> void:
-    connect("place_ground", ground_tile_map, "_on_world_tiles_place_ground")
-    connect("remove_ground", ground_tile_map, "_on_world_tiles_remove_ground")
-    connect("place_pipe", pipe_tile_map, "_on_world_tiles_place_pipe")
-    connect("remove_pipe", pipe_tile_map, "_on_world_tiles_remove_pipe")
+    connect("place_ground", ground_tile_map, "_on_WorldTiles_place_ground")
+    connect("remove_ground", ground_tile_map, "_on_WorldTiles_remove_ground")
+    connect("place_pipe", pipe_tile_map, "_on_WorldTiles_place_pipe")
+    connect("remove_pipe", pipe_tile_map, "_on_WorldTiles_remove_pipe")
 
 
-func _on_world_detector_ground_stopped_colliding() -> void:
+func _on_WorldDetector_ground_stopped_colliding() -> void:
     # _place_new_tiles()
     emit_signal("place_ground")
 
@@ -31,9 +31,9 @@ func _on_world_detector_ground_stopped_colliding() -> void:
         tiles_since_last_pipe = 0
 
 
-func _on_world_detector_ground_started_colliding() -> void:
+func _on_WorldDetector_ground_started_colliding() -> void:
     emit_signal("remove_ground")
 
 
-func _on_world_detector_pipe_started_colliding() -> void:
+func _on_WorldDetector_pipe_started_colliding() -> void:
     emit_signal("remove_pipe")
