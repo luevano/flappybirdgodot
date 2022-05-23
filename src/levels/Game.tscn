@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/game.gd" type="Script" id=1]
 [ext_resource path="res://levels/world/background/sprites/background_1.png" type="Texture" id=2]
 [ext_resource path="res://entities/actors/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/world/WorldTiles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sfx/point.wav" type="AudioStream" id=5]
 [ext_resource path="res://levels/detectors/ceiling_detector/CeilingDetector.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/detectors/world_detector/WorldDetector.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sfx/swoosh.wav" type="AudioStream" id=8]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,3 +27,9 @@ position = Vector2( 0, -140 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

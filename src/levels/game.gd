@@ -11,6 +11,8 @@ onready var world_tiles: WorldTiles = $WorldTiles
 onready var ceiling_detector: Area2D = $CeilingDetector
 onready var world_detector: Node2D = $WorldDetector
 onready var camera: Camera2D = $Camera
+onready var start_sound: AudioStreamPlayer = $StartSound
+onready var score_sound: AudioStreamPlayer = $ScoreSound
 
 onready var high_score: int = SavedData.get_high_score()
 var score: int = 0
@@ -37,9 +39,10 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if not is_game_running and event.is_action_pressed("jump"):
-		emit_signal("game_started")
 		_set_processing_to(true)
 		is_game_running = true
+		emit_signal("game_started")
+		start_sound.play()
 
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
@@ -75,5 +78,5 @@ func _on_ScoreDetector_body_entered(body: Node2D) -> void:
 		high_score = score
 		SavedData.set_new_high_score(high_score)
 		SavedData.save_data()
-
 	emit_signal("new_score", score, high_score)
+	score_sound.play()

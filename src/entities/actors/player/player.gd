@@ -2,17 +2,21 @@ class_name Player
 extends KinematicBody2D
 
 signal died
-var dead: bool = false
 
-export(float, 1.0, 1000.0, 1.0) var SPEED: float = 100.0
+export(float, 1.0, 1000.0, 1.0) var SPEED: float = 180.0
 export(float, 0.01, 100.0, 0.01) var ROT_SPEED: float = 10.0
-export(float, 1.0, 1000.0, 1.0) var JUMP_VELOCITY: float = 350.0
+export(float, 1.0, 1000.0, 1.0) var JUMP_VELOCITY: float = 380.0
+export(float, 1.0, 100.0, 1.0) var DEATH_JUMP_VELOCITY: float = 250.0
 
 onready var sprite: AnimatedSprite = $Sprite
+onready var jump_sound: AudioStreamPlayer = $JumpSound
+onready var hit_sound: AudioStreamPlayer = $HitSound
+onready var dead_sound: AudioStreamPlayer = $DeadSound
 
 var gravity: float = 10 * ProjectSettings.get_setting("physics/2d/default_gravity")
 var velocity: Vector2 = Vector2.ZERO
 var last_collision: KinematicCollision2D
+var dead: bool = false
 
 
 func _physics_process(delta: float) -> void:
@@ -21,6 +25,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump") and not dead:
 		velocity.y = -JUMP_VELOCITY
+		jump_sound.play()
 
 	if velocity.y < 0.0:
 		sprite.play()
@@ -57,3 +62,10 @@ func _emit_player_died() -> void:
 	dead = true
 	SPEED = 0.0
 	emit_signal("died")
+	# play the sounds after, because yield will take a bit of time,
+	# this way the camera stops when the player "dies"
+	velocity.y = -DEATH_JUMP_VELOCITY
+	velocity = move_and_slide(velocity)
+	hit_sound.play()
+	yield(hit_sound, "finished")
+	dead_sound.play()
