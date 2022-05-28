@@ -17,10 +17,8 @@ var pipe_now_colliding: bool = false
 
 func _physics_process(delta: float) -> void:
 	ground_was_colliding = _was_colliding(new_ground, ground_was_colliding, "ground_stopped_colliding")
-
 	ground_now_colliding = _now_colliding(old_ground, ground_now_colliding, "ground_started_colliding")
 	pipe_now_colliding = _now_colliding(old_pipe, pipe_now_colliding, "pipe_started_colliding")
-
 
 
 func _was_colliding(detector: RayCast2D, flag: bool, signal_name: String) -> bool:

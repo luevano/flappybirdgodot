@@ -22,7 +22,6 @@ func _ready() -> void:
 
 
 func _on_WorldDetector_ground_stopped_colliding() -> void:
-    # _place_new_tiles()
     emit_signal("place_ground")
 
     tiles_since_last_pipe += 1
