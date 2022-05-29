@@ -13,3 +13,5 @@ You can also find the itch.io page (with the game being playable in the browser)
 - Sprites by [MegaCrash](https://megacrash.itch.io/): [flappy-bird-assets](https://megacrash.itch.io/flappy-bird-assets); just modified the names to be all lowercase because I like it that way.
 - Font by [PoppyWorks](https://poppyworks.itch.io/): [Silver](https://poppyworks.itch.io/silver).
 - Sound by [meeq](https://github.com/meeq): [FlappyBird-N64](https://github.com/meeq/FlappyBird-N64), which at the same looks like it's taken from [101soundboards.com](https://www.101soundboards.com/boards/10178-flappy-bird-sounds), which either way at the end of the day the respective credit goes to [.Gears](https://dotgears.com/), the original owners of the SFX and game idea.
+
+This game uses Godot Engine, available under the following license: [Godot License](https://godotengine.org/license)
