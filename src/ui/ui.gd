@@ -8,8 +8,8 @@ onready var high_score_label: Label = $MarginContainer/InfoContainer/ScoreContai
 onready var start_game_label: Label = $MarginContainer/InfoContainer/StartGame
 
 onready var _initial_high_score: int = SavedData.get_high_score()
-
 var _version: String = ProjectSettings.get_setting("application/config/version")
+
 
 func _ready() -> void:
 	fps_label.visible = false

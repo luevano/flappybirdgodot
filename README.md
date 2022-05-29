@@ -6,6 +6,8 @@ Made in *Godot 4.0 alpha 8* initially, but had to backport to *Godot 3.5 rc 1* b
 
 You can find a devlog showing how I made the game in my website: [Creating a FlappyBird clone in Godot 3.5 devlog 1](https://blog.luevano.xyz/g/flappybird_godot_devlog_1.html).
 
+You can also find the itch.io page (with the game being playable in the browser) [here](https://lorentzeus.itch.io/flappybirdgodot).
+
 # Credits
 
 - Sprites by [MegaCrash](https://megacrash.itch.io/): [flappy-bird-assets](https://megacrash.itch.io/flappy-bird-assets); just modified the names to be all lowercase because I like it that way.
