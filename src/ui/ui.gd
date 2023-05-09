@@ -1,13 +1,13 @@
 class_name UI
 extends CanvasLayer
 
-onready var fps_label: Label = $MarginContainer/DebugContainer/FPS
-onready var version_label: Label = $MarginContainer/VersionContainer/Version
-onready var score_label: Label = $MarginContainer/InfoContainer/ScoreContainer/Score
-onready var high_score_label: Label = $MarginContainer/InfoContainer/ScoreContainer/HighScore
-onready var start_game_label: Label = $MarginContainer/InfoContainer/StartGame
+@onready var fps_label: Label = $MarginContainer/DebugContainer/FPS
+@onready var version_label: Label = $MarginContainer/VersionContainer/Version
+@onready var score_label: Label = $MarginContainer/InfoContainer/ScoreContainer/Score
+@onready var high_score_label: Label = $MarginContainer/InfoContainer/ScoreContainer/HighScore
+@onready var start_game_label: Label = $MarginContainer/InfoContainer/StartGame
 
-onready var _initial_high_score: int = SavedData.get_high_score()
+@onready var _initial_high_score: int = SavedData.get_high_score()
 var _version: String = ProjectSettings.get_setting("application/config/version")
 
 

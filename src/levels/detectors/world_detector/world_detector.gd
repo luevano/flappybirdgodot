@@ -7,9 +7,9 @@ signal pipe_started_colliding
 
 # new/was refering to incoming tiles,
 #	old/now referign to tiles going out of screen
-onready var new_ground: RayCast2D = $NewTile
-onready var old_ground: RayCast2D = $OldTile
-onready var old_pipe: RayCast2D = $OldPipe
+@onready var new_ground: RayCast2D = $NewTile
+@onready var old_ground: RayCast2D = $OldTile
+@onready var old_pipe: RayCast2D = $OldPipe
 var ground_was_colliding: bool = false
 var ground_now_colliding: bool = false
 var pipe_now_colliding: bool = false

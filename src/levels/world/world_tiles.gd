@@ -6,19 +6,19 @@ signal remove_ground
 signal place_pipe
 signal remove_pipe
 
-export(int, 2, 20, 2) var PIPE_SEP: int = 6
+@export var PIPE_SEP: int = 6 # (int, 2, 20, 2)
 
-onready var ground_tile_map: GroundTileMap = $GroundTileMap
-onready var pipe_tile_map: PipeTileMap = $PipeTileMap
+@onready var ground_tile_map: GroundTileMap = $GroundTileMap
+@onready var pipe_tile_map: PipeTileMap = $PipeTileMap
 
 var tiles_since_last_pipe: int = PIPE_SEP - 1
 
 
 func _ready() -> void:
-    connect("place_ground", ground_tile_map, "_on_WorldTiles_place_ground")
-    connect("remove_ground", ground_tile_map, "_on_WorldTiles_remove_ground")
-    connect("place_pipe", pipe_tile_map, "_on_WorldTiles_place_pipe")
-    connect("remove_pipe", pipe_tile_map, "_on_WorldTiles_remove_pipe")
+    connect("place_ground", Callable(ground_tile_map, "_on_WorldTiles_place_ground"))
+    connect("remove_ground", Callable(ground_tile_map, "_on_WorldTiles_remove_ground"))
+    connect("place_pipe", Callable(pipe_tile_map, "_on_WorldTiles_place_pipe"))
+    connect("remove_pipe", Callable(pipe_tile_map, "_on_WorldTiles_remove_pipe"))
 
 
 func _on_WorldDetector_ground_stopped_colliding() -> void:

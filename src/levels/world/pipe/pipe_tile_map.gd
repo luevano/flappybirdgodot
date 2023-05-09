@@ -19,7 +19,7 @@ var pipe: Dictionary = {
     PipePattern.PIPE_6: [0, 1, 2, 3, 4, -1, -1, -1, 0, 1, 2, 2, 2, 2, 2, 2]
 }
 
-onready var _pipe_sep: int = get_parent().PIPE_SEP
+@onready var _pipe_sep: int = get_parent().PIPE_SEP
 const _pipe_size: int = 16
 const _ground_level: int = 7
 const _pipe_level_y: int = _ground_level - 1
@@ -29,7 +29,7 @@ var pipe_stack: Array
 
 # don't specify type for game, as it results in cyclic dependency,
 # as stated here: https://godotengine.org/qa/39973/cyclic-dependency-error-between-actor-and-actor-controller
-onready var game = get_parent().get_parent()
+@onready var game = get_parent().get_parent()
 var detector_scene: PackedScene = preload("res://levels/detectors/score_detector/ScoreDetector.tscn")
 var detector_offset: Vector2 = Vector2(16.0, -(_pipe_size / 2.0) * 16.0)
 var detector_stack: Array
@@ -41,9 +41,9 @@ func _place_new_pipe() -> void:
         set_cellv(current_pipe, tile)
         current_pipe += Vector2.UP
 
-    var detector: Area2D = detector_scene.instance()
-    detector.position = map_to_world(new_pipe_starting_position) + detector_offset
-    detector.connect("body_entered", game, "_on_ScoreDetector_body_entered")
+    var detector: Area2D = detector_scene.instantiate()
+    detector.position = map_to_local(new_pipe_starting_position) + detector_offset
+    detector.connect("body_entered", Callable(game, "_on_ScoreDetector_body_entered"))
     detector_stack.append(detector)
     add_child(detector)
 

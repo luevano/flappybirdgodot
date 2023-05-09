@@ -1,19 +1,19 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://levels/world/ground/ground_tile_map.gd" type="Script" id=1]
-[ext_resource path="res://levels/world/ground/sprites/tile_style_1.png" type="Texture" id=2]
+[ext_resource path="res://levels/world/ground/sprites/tile_style_1.png" type="Texture2D" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+points = PackedVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+points = PackedVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+points = PackedVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+points = PackedVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [sub_resource type="TileSet" id=6]
 0/name = "tile_style_1.png 0"

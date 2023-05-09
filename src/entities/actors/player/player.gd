@@ -1,17 +1,17 @@
 class_name Player
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal died
 
-export(float, 1.0, 1000.0, 1.0) var SPEED: float = 180.0
-export(float, 0.01, 100.0, 0.01) var ROT_SPEED: float = 10.0
-export(float, 1.0, 1000.0, 1.0) var JUMP_VELOCITY: float = 380.0
-export(float, 1.0, 100.0, 1.0) var DEATH_JUMP_VELOCITY: float = 250.0
+@export var SPEED: float = 180.0 # (float, 1.0, 1000.0, 1.0)
+@export var ROT_SPEED: float = 10.0 # (float, 0.01, 100.0, 0.01)
+@export var JUMP_VELOCITY: float = 380.0 # (float, 1.0, 1000.0, 1.0)
+@export var DEATH_JUMP_VELOCITY: float = 250.0 # (float, 1.0, 100.0, 1.0)
 
-onready var sprite: AnimatedSprite = $Sprite
-onready var jump_sound: AudioStreamPlayer = $JumpSound
-onready var hit_sound: AudioStreamPlayer = $HitSound
-onready var dead_sound: AudioStreamPlayer = $DeadSound
+@onready var sprite: AnimatedSprite2D = $Sprite2D
+@onready var jump_sound: AudioStreamPlayer = $JumpSound
+@onready var hit_sound: AudioStreamPlayer = $HitSound
+@onready var dead_sound: AudioStreamPlayer = $DeadSound
 
 var gravity: float = 10 * ProjectSettings.get_setting("physics/2d/default_gravity")
 var velocity: Vector2 = Vector2.ZERO
@@ -37,7 +37,9 @@ func _physics_process(delta: float) -> void:
 			rotate(0.01 * ROT_SPEED)
 
 	# maybe can be done with move_and_collide, but this works
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 	last_collision = get_last_slide_collision()
 
 	if not dead and last_collision:
@@ -58,14 +60,16 @@ func _on_CeilingDetector_body_entered(body: Node2D) -> void:
 
 func _emit_player_died() -> void:
 	# bit 2 corresponds to pipe (starts from 0)
-	set_collision_mask_bit(2, false)
+	set_collision_mask_value(2, false)
 	dead = true
 	SPEED = 0.0
 	emit_signal("died")
 	# play the sounds after, because yield will take a bit of time,
 	# this way the camera stops when the player "dies"
 	velocity.y = -DEATH_JUMP_VELOCITY
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 	hit_sound.play()
-	yield(hit_sound, "finished")
+	await hit_sound.finished
 	dead_sound.play()

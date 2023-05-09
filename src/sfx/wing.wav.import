@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/wing.wav-fbd8c17444a2e09cefa7e3e9dc0db080.sample"
+type="AudioStreamWAV"
+uid="uid://b2l2dhjlss1l"
+path="res://.godot/imported/wing.wav-fbd8c17444a2e09cefa7e3e9dc0db080.sample"
 
 [deps]
 
 source_file="res://sfx/wing.wav"
-dest_files=[ "res://.import/wing.wav-fbd8c17444a2e09cefa7e3e9dc0db080.sample" ]
+dest_files=["res://.godot/imported/wing.wav-fbd8c17444a2e09cefa7e3e9dc0db080.sample"]
 
 [params]
 

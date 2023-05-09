@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/swoosh.wav-e885085fa317ba4a7d768a1644bae19f.sample"
+type="AudioStreamWAV"
+uid="uid://bvy8k8bmc04m5"
+path="res://.godot/imported/swoosh.wav-e885085fa317ba4a7d768a1644bae19f.sample"
 
 [deps]
 
 source_file="res://sfx/swoosh.wav"
-dest_files=[ "res://.import/swoosh.wav-e885085fa317ba4a7d768a1644bae19f.sample" ]
+dest_files=["res://.godot/imported/swoosh.wav-e885085fa317ba4a7d768a1644bae19f.sample"]
 
 [params]
 
