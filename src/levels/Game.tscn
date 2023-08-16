@@ -1,35 +1,31 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://bmmxf7dx8r0am"]
 
-[ext_resource path="res://levels/game.gd" type="Script" id=1]
-[ext_resource path="res://levels/world/background/sprites/background_1.png" type="Texture2D" id=2]
-[ext_resource path="res://entities/actors/player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://levels/world/WorldTiles.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sfx/point.wav" type="AudioStream" id=5]
-[ext_resource path="res://levels/detectors/ceiling_detector/CeilingDetector.tscn" type="PackedScene" id=6]
-[ext_resource path="res://levels/detectors/world_detector/WorldDetector.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sfx/swoosh.wav" type="AudioStream" id=8]
+[ext_resource type="Script" path="res://levels/game.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d0b0gclqaitxk" path="res://levels/world/background/sprites/background_1.png" id="2"]
+[ext_resource type="PackedScene" path="res://entities/actors/player/Player.tscn" id="3"]
+[ext_resource type="AudioStream" uid="uid://cqr0lxl2en1vw" path="res://sfx/point.wav" id="5"]
+[ext_resource type="PackedScene" path="res://levels/detectors/ceiling_detector/CeilingDetector.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://levels/detectors/world_detector/WorldDetector.tscn" id="7"]
+[ext_resource type="AudioStream" uid="uid://bvy8k8bmc04m5" path="res://sfx/swoosh.wav" id="8"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource( 2 )
-offset = Vector2( 0, -10 )
+texture = ExtResource("2")
+offset = Vector2(0, -10)
 
-[node name="WorldTiles" parent="." instance=ExtResource( 4 )]
+[node name="CeilingDetector" parent="." instance=ExtResource("6")]
+position = Vector2(0, -140)
 
-[node name="CeilingDetector" parent="." instance=ExtResource( 6 )]
-position = Vector2( 0, -140 )
+[node name="WorldDetector" parent="." instance=ExtResource("7")]
 
-[node name="WorldDetector" parent="." instance=ExtResource( 7 )]
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource("3")]
 
 [node name="Camera3D" type="Camera2D" parent="."]
-current = true
 
 [node name="StartSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="ScoreSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource("5")

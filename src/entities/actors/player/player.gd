@@ -14,7 +14,7 @@ signal died
 @onready var dead_sound: AudioStreamPlayer = $DeadSound
 
 var gravity: float = 10 * ProjectSettings.get_setting("physics/2d/default_gravity")
-var velocity: Vector2 = Vector2.ZERO
+# var velocity: Vector2 = Vector2.ZERO
 var last_collision: KinematicCollision2D
 var dead: bool = false
 
