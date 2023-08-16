@@ -2,11 +2,11 @@
 
 FlappyBird clone made in godot for learning purposes.
 
-Made in *Godot 4.0 alpha 8* initially, but had to backport to *Godot 3.5 rc 1* because the HTML5 (webassembly) export functionality is not available on 4.0 yet.
+Made in *Godot 4.0 alpha 8* initially, but had to backport to *Godot 3.5 rc 1* because the HTML5 (webassembly) export functionality wasn't available for 4.0 back then.
 
 You can find a devlog showing how I made the game in my website: [Creating a FlappyBird clone in Godot 3.5 devlog 1](https://blog.luevano.xyz/g/flappybird_godot_devlog_1.html).
 
-You can also find the itch.io page (with the game being playable in the browser) [here](https://lorentzeus.itch.io/flappybirdgodot).
+You can also find the itch.io page [here](https://lorentzeus.itch.io/flappybirdgodot), with the game being playable in the browser, currently for 3.5 only.
 
 # Credits
 
