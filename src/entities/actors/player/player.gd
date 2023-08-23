@@ -1,10 +1,10 @@
 class_name Player
 extends CharacterBody2D
 
-@export var SPEED: float = 180.0 # (float, 1.0, 1000.0, 1.0)
-@export var ROT_SPEED: float = 10.0 # (float, 0.01, 100.0, 0.01)
-@export var JUMP_VELOCITY: float = 380.0 # (float, 1.0, 1000.0, 1.0)
-@export var DEATH_JUMP_VELOCITY: float = 250.0 # (float, 1.0, 100.0, 1.0)
+@export_range(1.0, 1000.0, 1.0) var SPEED: float = 180.0
+@export_range(0.01, 100.0, 0.01) var ROT_SPEED: float = 10.0
+@export_range(1.0, 1000.0, 1.0) var JUMP_VELOCITY: float = 380.0
+@export_range(1.0, 100.0, 1.0) var DEATH_JUMP_VELOCITY: float = 250.0
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var jump_sound: AudioStreamPlayer = $JumpSound

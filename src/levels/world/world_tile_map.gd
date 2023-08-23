@@ -1,7 +1,7 @@
 class_name WorldTileMap
 extends TileMap
 
-@export var PIPE_SEP: int = 6 # (int, 2, 20, 2)
+@export_range(2, 20, 2) var PIPE_SEP: int = 6
 
 enum Ground {
 	TILE_1,
