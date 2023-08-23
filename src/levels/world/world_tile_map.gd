@@ -1,9 +1,6 @@
 class_name WorldTileMap
 extends TileMap
 
-# don't specify type for game, as it results in cyclic dependency,
-# as stated here: https://godotengine.org/qa/39973/cyclic-dependency-error-between-actor-and-actor-controller
-@onready var game = get_parent().get_parent()
 @export var PIPE_SEP: int = 6 # (int, 2, 20, 2)
 
 enum Ground {
@@ -50,22 +47,10 @@ var detector_scene: PackedScene = preload("res://levels/detectors/score_detector
 var detector_offset: Vector2 = Vector2(16.0, -(_pipe_size / 2.0) * 16.0)
 var detector_stack: Array
 
-
-func _on_WorldDetector_ground_stopped_colliding() -> void:
-	_place_new_ground()
-
-	tiles_since_last_pipe += 1
-	if tiles_since_last_pipe == PIPE_SEP:
-		_place_new_pipe()
-		tiles_since_last_pipe = 0
-
-
-func _on_WorldDetector_ground_started_colliding() -> void:
-	_remove_first_ground()
-
-
-func _on_WorldDetector_pipe_started_colliding() -> void:
-	_remove_old_pipe()
+func _ready() -> void:
+	Event.ground_stopped_colliding.connect(_on_WorldDetector_ground_stopped_colliding)
+	Event.ground_started_colliding.connect(_on_WorldDetector_ground_started_colliding)
+	Event.pipe_started_colliding.connect(_on_WorldDetector_pipe_started_colliding)
 
 
 func _place_new_ground() -> void:
@@ -92,7 +77,7 @@ func _place_new_pipe() -> void:
 
 	var detector: Area2D = detector_scene.instantiate()
 	detector.position = map_to_local(new_pipe_starting_position) + detector_offset
-	detector.connect("body_entered", Callable(game, "_on_ScoreDetector_body_entered"))
+	detector.body_entered.connect(_on_ScoreDetector_body_entered)
 	detector_stack.append(detector)
 	add_child(detector)
 
@@ -115,3 +100,24 @@ func _remove_old_pipe() -> void:
 
 func _get_random_pipe() -> int:
 	return randi() % PipePattern.size()
+
+
+func _on_WorldDetector_ground_stopped_colliding() -> void:
+	_place_new_ground()
+
+	tiles_since_last_pipe += 1
+	if tiles_since_last_pipe == PIPE_SEP:
+		_place_new_pipe()
+		tiles_since_last_pipe = 0
+
+
+func _on_WorldDetector_ground_started_colliding() -> void:
+	_remove_first_ground()
+
+
+func _on_WorldDetector_pipe_started_colliding() -> void:
+	_remove_old_pipe()
+
+
+func _on_ScoreDetector_body_entered(body: Area2D) -> void:
+	Event.player_score.emit()

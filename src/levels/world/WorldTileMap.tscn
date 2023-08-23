@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6vp8s72wr360"]
+[gd_scene load_steps=6 format=3 uid="uid://b6vp8s72wr360"]
 
 [ext_resource type="Texture2D" uid="uid://bdsms07gv4tfs" path="res://levels/world/sprites/ground/tile_style_1.png" id="1_i4rr8"]
 [ext_resource type="Texture2D" uid="uid://prv0mmgc7h5w" path="res://levels/world/sprites/pipe/pipe_style_1.png" id="2_yb23v"]
-[ext_resource type="Script" path="res://levels/world/world_tile_map.gd" id="3_765qb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsenu"]
 resource_name = "ground"
@@ -81,4 +80,3 @@ sources/1 = SubResource("TileSetAtlasSource_6283n")
 tile_set = SubResource("TileSet_0xxta")
 format = 2
 layer_0/tile_data = PackedInt32Array(458752, 65536, 5, 524287, 196608, 5, 524286, 65536, 5, 524285, 131072, 5, 524284, 131072, 5, 524283, 65536, 5, 524282, 131072, 5, 524281, 196608, 5, 524280, 65536, 5, 458753, 131072, 5, 458754, 65536, 5, 458755, 131072, 5, 458756, 131072, 5, 458757, 196608, 5, 458758, 65536, 5, 458759, 196608, 5, 458760, 131072, 5, 458761, 65536, 5, 458762, 196608, 5, 589816, 262144, 5, 589817, 262144, 5, 589818, 262144, 5, 589819, 262144, 5, 589820, 262144, 5, 589821, 262144, 5, 589822, 262144, 5, 589823, 262144, 5, 524288, 262144, 5, 524289, 262144, 5, 524290, 262144, 5, 524291, 262144, 5, 524292, 262144, 5, 524293, 262144, 5, 524294, 262144, 5, 524295, 262144, 5, 524296, 262144, 5, 524297, 262144, 5, 524298, 262144, 5)
-script = ExtResource("3_765qb")

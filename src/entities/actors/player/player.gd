@@ -1,8 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-signal died
-
 @export var SPEED: float = 180.0 # (float, 1.0, 1000.0, 1.0)
 @export var ROT_SPEED: float = 10.0 # (float, 0.01, 100.0, 0.01)
 @export var JUMP_VELOCITY: float = 380.0 # (float, 1.0, 1000.0, 1.0)
@@ -16,6 +14,10 @@ signal died
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var last_collision: KinematicCollision2D
 var dead: bool = false
+
+
+func _ready() -> void:
+	Event.player_collide.connect(_on_Player_collide)
 
 
 func _physics_process(delta: float) -> void:
@@ -42,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	last_collision = get_last_slide_collision()
 
 	if not dead and last_collision:
-		_emit_player_died()
+		Event.player_collide.emit()
 
 
 func _stop_sprite() -> void:
@@ -52,17 +54,12 @@ func _stop_sprite() -> void:
 		sprite.frame = 0
 
 
-# when dying because of boundary
-func _on_CeilingDetector_body_entered(body: Node2D) -> void:
-	_emit_player_died()
-
-
-func _emit_player_died() -> void:
+func _on_Player_collide() -> void:
 	# bit 2 corresponds to pipe (starts from 0)
 	set_collision_mask_value(2, false)
 	dead = true
 	SPEED = 0.0
-	emit_signal("died")
+	Event.player_death.emit()
 	# play the sounds after, because yield will take a bit of time,
 	# this way the camera stops when the player "dies"
 	velocity.y = -DEATH_JUMP_VELOCITY

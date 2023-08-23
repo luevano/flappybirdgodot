@@ -1,10 +1,6 @@
 class_name WorldDetector
 extends Node2D
 
-signal ground_stopped_colliding
-signal ground_started_colliding
-signal pipe_started_colliding
-
 # new/was refering to incoming tiles,
 #	old/now referign to tiles going out of screen
 @onready var new_ground: RayCast2D = $NewTile
@@ -25,7 +21,7 @@ func _was_colliding(detector: RayCast2D, flag: bool, signal_name: String) -> boo
 	if detector.is_colliding():
 		return true
 	if flag:
-		emit_signal(signal_name)
+		Event.emit_signal(signal_name)
 		return false
 	return true
 
@@ -33,6 +29,6 @@ func _was_colliding(detector: RayCast2D, flag: bool, signal_name: String) -> boo
 func _now_colliding(detector: RayCast2D, flag: bool, signal_name: String) -> bool:
 	if detector.is_colliding():
 		if not flag:
-			emit_signal(signal_name)
+			Event.emit_signal(signal_name)
 			return true
 	return false

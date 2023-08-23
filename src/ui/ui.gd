@@ -16,6 +16,10 @@ func _ready() -> void:
 	version_label.set_text("v%s" % _version)
 	high_score_label.set_text("High score: %s" % _initial_high_score)
 
+	Event.game_start.connect(_on_Game_game_start)
+	Event.game_over.connect(_on_Game_game_over)
+	Event.new_score.connect(_on_Game_new_score)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_debug"):
@@ -27,7 +31,7 @@ func _process(delta: float) -> void:
 		fps_label.set_text("FPS: %d" % Performance.get_monitor(Performance.TIME_FPS))
 
 
-func _on_Game_game_started() -> void:
+func _on_Game_game_start() -> void:
 	start_game_label.visible = false
 	high_score_label.visible = false
 

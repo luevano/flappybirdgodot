@@ -21,9 +21,9 @@ position = Vector2(0, -140)
 
 [node name="WorldDetector" parent="." instance=ExtResource("7")]
 
-[node name="Player" parent="." instance=ExtResource("3")]
-
 [node name="WorldTileMap" parent="." instance=ExtResource("6_pau6a")]
+
+[node name="Player" parent="." instance=ExtResource("3")]
 
 [node name="Camera3D" type="Camera2D" parent="."]
 

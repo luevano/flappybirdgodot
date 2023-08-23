@@ -21,6 +21,7 @@ config/game_scale=3.0
 
 [autoload]
 
+Event="*res://event.gd"
 SavedData="*res://saved_data.gd"
 
 [debug]
