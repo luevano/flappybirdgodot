@@ -23,6 +23,7 @@ var is_game_running: bool = false
 
 
 func _ready() -> void:
+	# this is a property from Node2D, this ann all children will be scaled
 	scale = Vector2(_game_scale, _game_scale)
 	# so we move at the actual speed of the player
 	player_speed = player.SPEED / _game_scale

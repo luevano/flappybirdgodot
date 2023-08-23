@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/game.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d0b0gclqaitxk" path="res://levels/world/background/sprites/background_1.png" id="2"]
-[ext_resource type="PackedScene" path="res://entities/actors/player/Player.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://oq25ayamluoa" path="res://entities/actors/player/Player.tscn" id="3"]
 [ext_resource type="AudioStream" uid="uid://cqr0lxl2en1vw" path="res://sfx/point.wav" id="5"]
 [ext_resource type="PackedScene" path="res://levels/detectors/ceiling_detector/CeilingDetector.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://levels/detectors/world_detector/WorldDetector.tscn" id="7"]

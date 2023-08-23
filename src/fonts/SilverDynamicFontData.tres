@@ -1,5 +1,0 @@
-[gd_resource type="FontFile" format=2]
-
-[resource]
-antialiased = false
-font_path = "res://fonts/Silver.ttf"

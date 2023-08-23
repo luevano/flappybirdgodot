@@ -13,8 +13,7 @@ signal died
 @onready var hit_sound: AudioStreamPlayer = $HitSound
 @onready var dead_sound: AudioStreamPlayer = $DeadSound
 
-var gravity: float = 10 * ProjectSettings.get_setting("physics/2d/default_gravity")
-# var velocity: Vector2 = Vector2.ZERO
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var last_collision: KinematicCollision2D
 var dead: bool = false
 
@@ -47,7 +46,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _stop_sprite() -> void:
-	if sprite.playing:
+	if sprite.is_playing():
 		sprite.stop()
 	if sprite.frame != 0:
 		sprite.frame = 0

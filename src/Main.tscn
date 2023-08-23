@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bmmxf7dx8r0am" path="res://levels/Game.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://ui/UI.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://3a8ndjqtt72v" path="res://ui/UI.tscn" id="3"]
 
 [node name="Main" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1")
 
 [node name="Game" parent="." instance=ExtResource("2")]
