@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6vp8s72wr360"]
+
+[ext_resource type="Texture2D" uid="uid://bdsms07gv4tfs" path="res://levels/world/sprites/ground/tile_style_1.png" id="1_i4rr8"]
+[ext_resource type="Texture2D" uid="uid://prv0mmgc7h5w" path="res://levels/world/sprites/pipe/pipe_style_1.png" id="2_yb23v"]
+[ext_resource type="Script" path="res://levels/world/world_tile_map.gd" id="3_765qb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsenu"]
+resource_name = "ground"
+texture = ExtResource("1_i4rr8")
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_1/angular_velocity = 0.0
+2:5/0 = 0
+2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:5/0/physics_layer_0/angular_velocity = 0.0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+2:5/0/physics_layer_1/angular_velocity = 0.0
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_1/angular_velocity = 0.0
+4:5/0 = 0
+4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_1/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6283n"]
+resource_name = "pipe"
+texture = ExtResource("2_yb23v")
+0:0/size_in_atlas = Vector2i(2, 1)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+0:1/size_in_atlas = Vector2i(2, 1)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+0:2/size_in_atlas = Vector2i(2, 1)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_1/angular_velocity = 0.0
+0:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+0:3/size_in_atlas = Vector2i(2, 1)
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+0:3/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_1/angular_velocity = 0.0
+0:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+0:4/size_in_atlas = Vector2i(2, 1)
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+0:4/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_1/angular_velocity = 0.0
+0:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+
+[sub_resource type="TileSet" id="TileSet_0xxta"]
+physics_layer_0/collision_layer = 2
+physics_layer_1/collision_layer = 4
+sources/0 = SubResource("TileSetAtlasSource_rsenu")
+sources/1 = SubResource("TileSetAtlasSource_6283n")
+
+[node name="WorldTileMap" type="TileMap"]
+tile_set = SubResource("TileSet_0xxta")
+format = 2
+layer_0/tile_data = PackedInt32Array(458752, 65536, 5, 524287, 196608, 5, 524286, 65536, 5, 524285, 131072, 5, 524284, 131072, 5, 524283, 65536, 5, 524282, 131072, 5, 524281, 196608, 5, 524280, 65536, 5, 458753, 131072, 5, 458754, 65536, 5, 458755, 131072, 5, 458756, 131072, 5, 458757, 196608, 5, 458758, 65536, 5, 458759, 196608, 5, 458760, 131072, 5, 458761, 65536, 5, 458762, 196608, 5, 589816, 262144, 5, 589817, 262144, 5, 589818, 262144, 5, 589819, 262144, 5, 589820, 262144, 5, 589821, 262144, 5, 589822, 262144, 5, 589823, 262144, 5, 524288, 262144, 5, 524289, 262144, 5, 524290, 262144, 5, 524291, 262144, 5, 524292, 262144, 5, 524293, 262144, 5, 524294, 262144, 5, 524295, 262144, 5, 524296, 262144, 5, 524297, 262144, 5, 524298, 262144, 5)
+script = ExtResource("3_765qb")

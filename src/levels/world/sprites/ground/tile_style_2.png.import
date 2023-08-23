@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0b0gclqaitxk"
-path="res://.godot/imported/background_1.png-1c81e0008e0696cf77310c481c7f9c22.ctex"
+uid="uid://b2xggg3eb5e00"
+path="res://.godot/imported/tile_style_2.png-39fe8e316038ac6ef36761f0459fbd99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/world/background/sprites/background_1.png"
-dest_files=["res://.godot/imported/background_1.png-1c81e0008e0696cf77310c481c7f9c22.ctex"]
+source_file="res://levels/world/sprites/ground/tile_style_2.png"
+dest_files=["res://.godot/imported/tile_style_2.png-39fe8e316038ac6ef36761f0459fbd99.ctex"]
 
 [params]
 

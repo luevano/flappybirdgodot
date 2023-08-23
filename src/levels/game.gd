@@ -7,7 +7,7 @@ signal new_score(score, high_score)
 
 @onready var player: Player = $Player
 @onready var background: Sprite2D= $Background
-# @onready var world_tiles: WorldTiles = $WorldTiles
+# @onready var world_tm: WorldTileMap = $WorldTileMap
 @onready var ceiling_detector: Area2D = $CeilingDetector
 @onready var world_detector: Node2D = $WorldDetector
 @onready var camera: Camera2D = $Camera3D
@@ -30,9 +30,9 @@ func _ready() -> void:
 
 	player.connect("died", Callable(self, "_on_Player_died"))
 	ceiling_detector.connect("body_entered", Callable(player, "_on_CeilingDetector_body_entered"))
-	# world_detector.connect("ground_stopped_colliding", Callable(world_tiles, "_on_WorldDetector_ground_stopped_colliding"))
-	# world_detector.connect("ground_started_colliding", Callable(world_tiles, "_on_WorldDetector_ground_started_colliding"))
-	# world_detector.connect("pipe_started_colliding", Callable(world_tiles, "_on_WorldDetector_pipe_started_colliding"))
+	# world_detector.connect("ground_stopped_colliding", Callable(world_tm, "_on_WorldDetector_ground_stopped_colliding"))
+	# world_detector.connect("ground_started_colliding", Callable(world_tm, "_on_WorldDetector_ground_started_colliding"))
+	# world_detector.connect("pipe_started_colliding", Callable(world_tm, "_on_WorldDetector_pipe_started_colliding"))
 
 	# need to start without processing, so we can move through the menus
 	_set_processing_to(false)
@@ -62,8 +62,8 @@ func _set_processing_to(on_off: bool, include_player: bool = true) -> void:
 	if include_player:
 		player.set_process(on_off)
 		player.set_physics_process(on_off)
-	# world_tiles.set_process(on_off)
-	# world_tiles.set_physics_process(on_off)
+	# world_tm.set_process(on_off)
+	# world_tm.set_physics_process(on_off)
 	ceiling_detector.set_process(on_off)
 	ceiling_detector.set_physics_process(on_off)
 

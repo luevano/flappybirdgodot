@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2xggg3eb5e00"
-path="res://.godot/imported/tile_style_2.png-b477b0d1102cbf09a5ec9e7f93e865d5.ctex"
+uid="uid://dynl8al7ufbqb"
+path="res://.godot/imported/background_4.png-bebf2c93661aab07b72d95f3aa0b9c1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/world/ground/sprites/tile_style_2.png"
-dest_files=["res://.godot/imported/tile_style_2.png-b477b0d1102cbf09a5ec9e7f93e865d5.ctex"]
+source_file="res://levels/world/sprites/background/background_4.png"
+dest_files=["res://.godot/imported/background_4.png-bebf2c93661aab07b72d95f3aa0b9c1a.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dynl8al7ufbqb"
-path="res://.godot/imported/background_4.png-4f78e0b02d4e54fe0b627ddddf400852.ctex"
+uid="uid://b20h4xgwiwh57"
+path="res://.godot/imported/pipe_style_3.png-09814ea0c5734e4795e89487287e4c7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/world/background/sprites/background_4.png"
-dest_files=["res://.godot/imported/background_4.png-4f78e0b02d4e54fe0b627ddddf400852.ctex"]
+source_file="res://levels/world/sprites/pipe/pipe_style_3.png"
+dest_files=["res://.godot/imported/pipe_style_3.png-09814ea0c5734e4795e89487287e4c7b.ctex"]
 
 [params]
 

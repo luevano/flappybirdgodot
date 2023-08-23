@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b20h4xgwiwh57"
-path="res://.godot/imported/pipe_style_3.png-aaa660252321cf330197ff28659553ba.ctex"
+uid="uid://ck1bvrwh1awk1"
+path="res://.godot/imported/background_3.png-ef27fae0e84e7caf4cfee22403c5b888.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/world/pipe/sprites/pipe_style_3.png"
-dest_files=["res://.godot/imported/pipe_style_3.png-aaa660252321cf330197ff28659553ba.ctex"]
+source_file="res://levels/world/sprites/background/background_3.png"
+dest_files=["res://.godot/imported/background_3.png-ef27fae0e84e7caf4cfee22403c5b888.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
