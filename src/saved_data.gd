@@ -7,15 +7,13 @@ var _data: ConfigFile
 
 
 func _ready() -> void:
-	print("[DEBUG] Save data autoload _ready() start.")
 	_load_data()
-	print("[DEBUG] Saved data autoload _ready() finish.")
 
 
 func save_data() -> void:
 	var err: int = _data.save(DATA_PATH)
 	if err != OK:
-		print("[ERROR #%d] Cannot save data." % err)
+		print("[ERROR] Cannot save data.")
 
 
 func set_new_high_score(high_score: int) -> void:
@@ -37,4 +35,4 @@ func _load_data() -> void:
 		set_new_high_score(0)
 		save_data()
 	else:
-		print("[ERROR #%d] Unexpected error while tryign to read file." % err)
+		print("[ERROR] Unexpected error while tryign to read file.")

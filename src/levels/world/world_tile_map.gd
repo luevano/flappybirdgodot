@@ -23,14 +23,13 @@ var new_pipe_position: Vector2i = Vector2i(_initial_new_pipe_x, _pipe_level_y)
 var pipe_stack: Array
 
 var detector_scene: PackedScene = preload("res://levels/detectors/score_detector/ScoreDetector.tscn")
-# var detector_offset: Vector2 = Vector2(- (32.0 / 2.0), (_pipe_size / 2.0) * 16.0)
 var detector_offset: Vector2 = Vector2(0.0, (256.0 / 2.0) - (16.0 / 2.0))
 var detector_stack: Array
 
 func _ready() -> void:
-	Event.ground_stopped_colliding.connect(_on_WorldDetector_ground_stopped_colliding)
-	Event.ground_started_colliding.connect(_on_WorldDetector_ground_started_colliding)
-	Event.pipe_started_colliding.connect(_on_WorldDetector_pipe_started_colliding)
+	Event.ground_stopped_colliding.connect(_on_ground_stopped_colliding)
+	Event.ground_started_colliding.connect(_on_ground_started_colliding)
+	Event.pipe_started_colliding.connect(_on_pipe_started_colliding)
 
 
 func _place_new_ground() -> void:
@@ -62,7 +61,6 @@ func _place_new_pipe() -> void:
 	new_pipe_position += PIPE_SEP * Vector2i.RIGHT
 
 
-# void erase_cell(layer: int, coords: Vector2i)
 func _remove_old_pipe() -> void:
 	var current_pipe_tile: Vector2i = pipe_stack.pop_front()
 	var c: int = 0
@@ -77,7 +75,7 @@ func _remove_old_pipe() -> void:
 	detector.queue_free()
 
 
-func _on_WorldDetector_ground_stopped_colliding() -> void:
+func _on_ground_stopped_colliding() -> void:
 	_place_new_ground()
 
 	tiles_since_last_pipe += 1
@@ -86,11 +84,11 @@ func _on_WorldDetector_ground_stopped_colliding() -> void:
 		tiles_since_last_pipe = 0
 
 
-func _on_WorldDetector_ground_started_colliding() -> void:
+func _on_ground_started_colliding() -> void:
 	_remove_old_ground()
 
 
-func _on_WorldDetector_pipe_started_colliding() -> void:
+func _on_pipe_started_colliding() -> void:
 	_remove_old_pipe()
 
 

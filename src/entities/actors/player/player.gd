@@ -17,7 +17,7 @@ var dead: bool = false
 
 
 func _ready() -> void:
-	Event.player_collide.connect(_on_Player_collide)
+	Event.player_collide.connect(_on_player_collide)
 
 
 func _physics_process(delta: float) -> void:
@@ -54,7 +54,7 @@ func _stop_sprite() -> void:
 		sprite.frame = 0
 
 
-func _on_Player_collide() -> void:
+func _on_player_collide() -> void:
 	# bit 2 corresponds to pipe (starts from 0)
 	set_collision_mask_value(2, false)
 	dead = true

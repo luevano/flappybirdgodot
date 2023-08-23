@@ -24,8 +24,8 @@ func _ready() -> void:
 	# so we move at the actual speed of the player
 	player_speed = player.SPEED / _game_scale
 
-	Event.player_death.connect(_on_Player_player_death)
-	Event.player_score.connect(_on_ScoreDetector_body_entered)
+	Event.player_death.connect(_on_player_death)
+	Event.player_score.connect(_on_player_score)
 	ceiling_detector.body_entered.connect(_on_CeilingDetector_body_entered)
 
 	# need to start without processing, so we can move through the menus
@@ -62,12 +62,12 @@ func _set_processing_to(on_off: bool, include_player: bool = true) -> void:
 	ceiling_detector.set_physics_process(on_off)
 
 
-func _on_Player_player_death() -> void:
+func _on_player_death() -> void:
 	_set_processing_to(false, false)
 	Event.game_over.emit()
 
 
-func _on_ScoreDetector_body_entered() -> void:
+func _on_player_score() -> void:
 	score += 1
 	if score > high_score:
 		high_score = score

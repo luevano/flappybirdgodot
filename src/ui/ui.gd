@@ -16,9 +16,9 @@ func _ready() -> void:
 	version_label.set_text("v%s" % _version)
 	high_score_label.set_text("High score: %s" % _initial_high_score)
 
-	Event.game_start.connect(_on_Game_game_start)
-	Event.game_over.connect(_on_Game_game_over)
-	Event.new_score.connect(_on_Game_new_score)
+	Event.game_start.connect(_on_game_start)
+	Event.game_over.connect(_on_game_over)
+	Event.new_score.connect(_on_new_score)
 
 
 func _input(event: InputEvent) -> void:
@@ -31,17 +31,17 @@ func _process(delta: float) -> void:
 		fps_label.set_text("FPS: %d" % Performance.get_monitor(Performance.TIME_FPS))
 
 
-func _on_Game_game_start() -> void:
+func _on_game_start() -> void:
 	start_game_label.visible = false
 	high_score_label.visible = false
 
 
-func _on_Game_game_over() -> void:
+func _on_game_over() -> void:
 	start_game_label.set_text("Press R to restart")
 	start_game_label.visible = true
 	high_score_label.visible = true
 
 
-func _on_Game_new_score(score: int, high_score: int) -> void:
+func _on_new_score(score: int, high_score: int) -> void:
 	score_label.set_text(str(score))
 	high_score_label.set_text("High score: %s" % high_score)
