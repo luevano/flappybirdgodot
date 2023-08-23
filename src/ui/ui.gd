@@ -43,5 +43,5 @@ func _on_Game_game_over() -> void:
 
 
 func _on_Game_new_score(score: int, high_score: int) -> void:
-	score_label.set_text(score as String)
+	score_label.set_text(str(score))
 	high_score_label.set_text("High score: %s" % high_score)

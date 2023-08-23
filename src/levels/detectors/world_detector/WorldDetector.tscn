@@ -1,24 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://5a8flj2a2trl"]
 
-[ext_resource path="res://levels/detectors/world_detector/world_detector.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://levels/detectors/world_detector/world_detector.gd" id="1"]
 
 [node name="WorldDetector" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="NewTile" type="RayCast2D" parent="."]
-position = Vector2( 152, -200 )
-enabled = true
-target_position = Vector2( 0, 400 )
+[node name="NewGround" type="RayCast2D" parent="."]
+position = Vector2(152, -200)
+target_position = Vector2(0, 400)
 collision_mask = 2
 
-[node name="OldTile" type="RayCast2D" parent="."]
-position = Vector2( -152, -200 )
-enabled = true
-target_position = Vector2( 0, 400 )
+[node name="OldGround" type="RayCast2D" parent="."]
+position = Vector2(-152, -200)
+target_position = Vector2(0, 400)
 collision_mask = 2
 
 [node name="OldPipe" type="RayCast2D" parent="."]
-position = Vector2( -152, -200 )
-enabled = true
-target_position = Vector2( 0, 400 )
+position = Vector2(-152, -200)
+target_position = Vector2(0, 400)
 collision_mask = 4

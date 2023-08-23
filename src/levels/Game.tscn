@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cqr0lxl2en1vw" path="res://sfx/point.wav" id="5"]
 [ext_resource type="PackedScene" path="res://levels/detectors/ceiling_detector/CeilingDetector.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://b6vp8s72wr360" path="res://levels/world/WorldTileMap.tscn" id="6_pau6a"]
-[ext_resource type="PackedScene" path="res://levels/detectors/world_detector/WorldDetector.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://5a8flj2a2trl" path="res://levels/detectors/world_detector/WorldDetector.tscn" id="7"]
 [ext_resource type="AudioStream" uid="uid://bvy8k8bmc04m5" path="res://sfx/swoosh.wav" id="8"]
 
 [node name="Game" type="Node2D"]

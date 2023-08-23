@@ -3,48 +3,28 @@ extends TileMap
 
 @export_range(2, 20, 2) var PIPE_SEP: int = 6
 
-enum Ground {
-	TILE_1,
-	TILE_2,
-	TILE_3,
-	TILE_DOWN_1,
-}
-
-enum PipePattern {
-	PIPE_1,
-	PIPE_2,
-	PIPE_3,
-	PIPE_4,
-	PIPE_5,
-	PIPE_6
-}
-
-var pipe: Dictionary = {
-	PipePattern.PIPE_1: [0, 1, 2, 2, 2, 2, 2, 2, 3, 4, -1, -1, -1, 0, 1, 2],
-	PipePattern.PIPE_2: [0, 1, 2, 2, 2, 2, 2, 3, 4, -1, -1, -1, 0, 1, 2, 2],
-	PipePattern.PIPE_3: [0, 1, 2, 2, 2, 2, 3, 4, -1, -1, -1, 0, 1, 2, 2, 2],
-	PipePattern.PIPE_4: [0, 1, 2, 2, 2, 3, 4, -1, -1, -1, 0, 1, 2, 2, 2, 2],
-	PipePattern.PIPE_5: [0, 1, 2, 2, 3, 4, -1, -1, -1, 0, 1, 2, 2, 2, 2, 2],
-	PipePattern.PIPE_6: [0, 1, 2, 3, 4, -1, -1, -1, 0, 1, 2, 2, 2, 2, 2, 2]
-}
-
+var ground_tiles_amount: int = 3
+var ground_bottom_tile: Vector2i = Vector2i(4, 5)
+var pipe_pattern_amount: int = 6
 var tiles_since_last_pipe: int = PIPE_SEP - 1
+
 # old_tile is the actual first tile, whereas the new_tile_position
 #	is the the next empty tile; these also correspond to the top tile
 const _initial_old_tile_x: int = -8
 const _initial_new_tile_x: int = 11
-var old_tile_position: Vector2 = Vector2(_initial_old_tile_x, _ground_level)
-var new_tile_position: Vector2 = Vector2(_initial_new_tile_x, _ground_level)
+var old_tile_position: Vector2i = Vector2i(_initial_old_tile_x, _ground_level)
+var new_tile_position: Vector2i = Vector2i(_initial_new_tile_x, _ground_level)
 
 const _pipe_size: int = 16
 const _ground_level: int = 7
-const _pipe_level_y: int = _ground_level - 1
+const _pipe_level_y: int = - _pipe_size + _ground_level
 const _initial_new_pipe_x: int = 11
-var new_pipe_starting_position: Vector2 = Vector2(_initial_new_pipe_x, _pipe_level_y)
+var new_pipe_position: Vector2i = Vector2i(_initial_new_pipe_x, _pipe_level_y)
 var pipe_stack: Array
 
 var detector_scene: PackedScene = preload("res://levels/detectors/score_detector/ScoreDetector.tscn")
-var detector_offset: Vector2 = Vector2(16.0, -(_pipe_size / 2.0) * 16.0)
+# var detector_offset: Vector2 = Vector2(- (32.0 / 2.0), (_pipe_size / 2.0) * 16.0)
+var detector_offset: Vector2 = Vector2(0.0, (256.0 / 2.0) - (16.0 / 2.0))
 var detector_stack: Array
 
 func _ready() -> void:
@@ -54,52 +34,47 @@ func _ready() -> void:
 
 
 func _place_new_ground() -> void:
-	set_cellv(new_tile_position, _get_random_ground())
-	set_cellv(new_tile_position + Vector2.DOWN, Ground.TILE_DOWN_1)
-	new_tile_position += Vector2.RIGHT
+	var random_tile_index: int = randi_range(1, ground_tiles_amount)
+	var random_tile: Vector2i = Vector2i(random_tile_index, 5)
+	set_cell(0, new_tile_position, 0, random_tile)
+	set_cell(0, new_tile_position + Vector2i.DOWN, 0, ground_bottom_tile)
+	new_tile_position += Vector2i.RIGHT
 
 
-func _remove_first_ground() -> void:
-	set_cellv(old_tile_position, -1)
-	set_cellv(old_tile_position + Vector2.DOWN, -1)
-	old_tile_position += Vector2.RIGHT
-
-
-func _get_random_ground() -> int:
-	return randi() % (Ground.size() - 1)
+func _remove_old_ground() -> void:
+	set_cell(0, old_tile_position, -1)
+	set_cell(0, old_tile_position + Vector2i.DOWN, -1)
+	old_tile_position += Vector2i.RIGHT
 
 
 func _place_new_pipe() -> void:
-	var current_pipe: Vector2 = new_pipe_starting_position
-	for tile in pipe[_get_random_pipe()]:
-		set_cellv(current_pipe, tile)
-		current_pipe += Vector2.UP
+	var random_pattern_index: int = randi() % (pipe_pattern_amount - 1)
+	var random_pattern: TileMapPattern = tile_set.get_pattern(random_pattern_index)
+	set_pattern(0, new_pipe_position, random_pattern)
 
 	var detector: Area2D = detector_scene.instantiate()
-	detector.position = map_to_local(new_pipe_starting_position) + detector_offset
+	detector.position = map_to_local(new_pipe_position) + detector_offset
 	detector.body_entered.connect(_on_ScoreDetector_body_entered)
 	detector_stack.append(detector)
 	add_child(detector)
 
-	pipe_stack.append(new_pipe_starting_position)
-	new_pipe_starting_position += PIPE_SEP * Vector2.RIGHT
+	pipe_stack.append(new_pipe_position)
+	new_pipe_position += PIPE_SEP * Vector2i.RIGHT
 
 
+# void erase_cell(layer: int, coords: Vector2i)
 func _remove_old_pipe() -> void:
-	var current_pipe: Vector2 = pipe_stack.pop_front()
+	var current_pipe_tile: Vector2i = pipe_stack.pop_front()
 	var c: int = 0
 	while c < _pipe_size:
-		set_cellv(current_pipe, -1)
-		current_pipe += Vector2.UP
+		erase_cell(0, current_pipe_tile)
+		# needs to be DOWN because of inverted coordinates on y
+		current_pipe_tile += Vector2i.DOWN
 		c += 1
 
 	var detector: Area2D = detector_stack.pop_front()
 	remove_child(detector)
 	detector.queue_free()
-
-
-func _get_random_pipe() -> int:
-	return randi() % PipePattern.size()
 
 
 func _on_WorldDetector_ground_stopped_colliding() -> void:
@@ -112,12 +87,12 @@ func _on_WorldDetector_ground_stopped_colliding() -> void:
 
 
 func _on_WorldDetector_ground_started_colliding() -> void:
-	_remove_first_ground()
+	_remove_old_ground()
 
 
 func _on_WorldDetector_pipe_started_colliding() -> void:
 	_remove_old_pipe()
 
 
-func _on_ScoreDetector_body_entered(body: Area2D) -> void:
+func _on_ScoreDetector_body_entered(body: Node2D) -> void:
 	Event.player_score.emit()

@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var player: Player = $Player
 @onready var background: Sprite2D= $Background
-# @onready var world_tm: WorldTileMap = $WorldTileMap
+@onready var world_tm: WorldTileMap = $WorldTileMap
 @onready var ceiling_detector: Area2D = $CeilingDetector
 @onready var world_detector: Node2D = $WorldDetector
 @onready var camera: Camera2D = $Camera3D
@@ -19,7 +19,7 @@ var is_game_running: bool = false
 
 
 func _ready() -> void:
-	# this is a property from Node2D, this ann all children will be scaled
+	# this is a property from Node2D, this and all children will be scaled
 	scale = Vector2(_game_scale, _game_scale)
 	# so we move at the actual speed of the player
 	player_speed = player.SPEED / _game_scale
@@ -56,8 +56,8 @@ func _set_processing_to(on_off: bool, include_player: bool = true) -> void:
 	if include_player:
 		player.set_process(on_off)
 		player.set_physics_process(on_off)
-	# world_tm.set_process(on_off)
-	# world_tm.set_physics_process(on_off)
+	world_tm.set_process(on_off)
+	world_tm.set_physics_process(on_off)
 	ceiling_detector.set_process(on_off)
 	ceiling_detector.set_physics_process(on_off)
 
@@ -77,5 +77,5 @@ func _on_ScoreDetector_body_entered() -> void:
 	score_sound.play()
 
 
-func _on_CeilingDetector_body_entered(body: Area2D) -> void:
+func _on_CeilingDetector_body_entered(body: Node2D) -> void:
 	Event.player_collide.emit()

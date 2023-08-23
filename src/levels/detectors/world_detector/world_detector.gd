@@ -3,8 +3,8 @@ extends Node2D
 
 # new/was refering to incoming tiles,
 #	old/now referign to tiles going out of screen
-@onready var new_ground: RayCast2D = $NewTile
-@onready var old_ground: RayCast2D = $OldTile
+@onready var new_ground: RayCast2D = $NewGround
+@onready var old_ground: RayCast2D = $OldGround
 @onready var old_pipe: RayCast2D = $OldPipe
 var ground_was_colliding: bool = false
 var ground_now_colliding: bool = false
