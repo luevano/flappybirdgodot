@@ -1,19 +1,19 @@
 class_name UI
 extends CanvasLayer
 
-@onready var fps_label: Label = $MarginContainer/DebugContainer/FPS
-@onready var version_label: Label = $MarginContainer/VersionContainer/Version
-@onready var score_label: Label = $MarginContainer/InfoContainer/ScoreContainer/Score
-@onready var high_score_label: Label = $MarginContainer/InfoContainer/ScoreContainer/HighScore
-@onready var start_game_label: Label = $MarginContainer/InfoContainer/StartGame
+
+@export var fps_label: Label
+@export var version_label: Label
+@export var score_label: Label
+@export var high_score_label: Label
+@export var start_game_label: Label
 
 @onready var _initial_high_score: int = SavedData.get_high_score()
-var _version: String = ProjectSettings.get_setting("application/config/version")
 
 
 func _ready() -> void:
 	fps_label.visible = false
-	version_label.set_text("v%s" % _version)
+	version_label.set_text("v%s" % Global.VERSION)
 	high_score_label.set_text("High score: %s" % _initial_high_score)
 
 	Event.game_start.connect(_on_game_start)

@@ -16,7 +16,6 @@ run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icons/game.png"
 config/windows_native_icon="res://icons/game.ico"
-config/version="2.0.0"
 
 [autoload]
 
