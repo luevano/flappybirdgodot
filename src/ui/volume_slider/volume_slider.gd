@@ -1,8 +1,11 @@
 class_name VolumeSlider
 extends HSlider
 
+@onready var _volume: float = SavedData.get_volume()
+
 
 func _ready() -> void:
+	value = _volume
 	value_changed.connect(_on_value_changed)
 
 

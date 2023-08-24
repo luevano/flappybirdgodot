@@ -4,13 +4,16 @@ extends TextureButton
 @export var icon_volume: CompressedTexture2D
 @export var icon_volume_mute: CompressedTexture2D
 
+@onready var _mute: bool = SavedData.get_mute()
+
 var _opaque: Color = Color(1, 1, 1, 1)
 var _translucent: Color = Color(1, 1, 1, 0.5)
 
 
 func _ready():
 	modulate = _translucent
-	_set_icon(button_pressed)
+	button_pressed = _mute
+	_set_icon(_mute)
 
 	toggled.connect(_on_toggled)
 	mouse_entered.connect(_on_mouse_entered)

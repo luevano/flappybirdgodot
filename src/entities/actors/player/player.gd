@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export_range(1.0, 150.0, 1.0) var SPEED: float = 60.0
 @export_range(0.01, 100.0, 0.01) var ROT_SPEED: float = 10.0
 @export_range(1.0, 300.0, 1.0) var JUMP_VELOCITY: float = 160.0
-@export_range(1.0, 100.0, 1.0) var DEATH_FALL_VELOCITY: float = 150.0
+@export_range(1.0, 100.0, 1.0) var DEATH_JUMP_VELOCITY: float = 150.0
 @export_range(10.0, 1000.0, 1.0) var GRAVITY: float = 500.0
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
@@ -52,14 +52,11 @@ func _stop_sprite() -> void:
 
 
 func _on_player_collide() -> void:
-	# bit 2 corresponds to pipe (starts from 0)
-	set_collision_mask_value(2, false)
+	set_collision_mask_value(3, false)
 	dead = true
 	SPEED = 0.0
 	Event.player_death.emit()
-	# play the sounds after, because yield will take a bit of time,
-	# this way the camera stops when the player "dies"
-	velocity.y = -DEATH_FALL_VELOCITY
+	velocity.y = -DEATH_JUMP_VELOCITY
 	set_velocity(velocity)
 	move_and_slide()
 	velocity = velocity
