@@ -1,3 +1,4 @@
+class_name Audio
 extends Node2D
 
 @export var audio_bus_name: String = "Master"
@@ -11,12 +12,17 @@ extends Node2D
 
 
 func _ready():
+	Event.set_mute.connect(_on_set_mute)
 	Event.set_volume.connect(_on_set_volume)
 	Event.game_start.connect(_on_game_start)
 	Event.player_jump.connect(_on_player_jump)
 	Event.player_score.connect(_on_player_score)
 	Event.player_collide.connect(_on_player_collide)
 	hit_sound.finished.connect(_on_HitSound_finished)
+
+
+func _on_set_mute(mute: bool) -> void:
+	AudioServer.set_bus_mute(_bus, mute)
 
 
 func _on_set_volume(linear_volume: float) -> void:

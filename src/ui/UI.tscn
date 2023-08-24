@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3a8ndjqtt72v"]
+[gd_scene load_steps=5 format=3 uid="uid://3a8ndjqtt72v"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://lwr786l78x8t" path="res://ui/volume_button/VolumeButton.tscn" id="3_0rkh0"]
 [ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/PixelText.tscn" id="3_3n4a0"]
-[ext_resource type="PackedScene" uid="uid://d3dtvj6vhm53" path="res://ui/VolumeSlider.tscn" id="3_lcuyv"]
+[ext_resource type="PackedScene" uid="uid://d3dtvj6vhm53" path="res://ui/volume_slider/VolumeSlider.tscn" id="3_lcuyv"]
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("fps_label", "version_label", "score_label", "high_score_label", "start_game_label")]
 script = ExtResource("3")
@@ -16,10 +17,11 @@ start_game_label = NodePath("Margin/VBox/VBox/VBox/StartGame")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
@@ -78,6 +80,29 @@ theme_override_font_sizes/font_size = 12
 text = "v0.0.0"
 vertical_alignment = 1
 
-[node name="VolumeSlider" parent="Margin/VBox/HBox/HBox" instance=ExtResource("3_lcuyv")]
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/HBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox/HBox/HBox/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxButton" type="VBoxContainer" parent="Margin/VBox/HBox/HBox/VBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VolumeButton" parent="Margin/VBox/HBox/HBox/VBox/HBox/VBoxButton" instance=ExtResource("3_0rkh0")]
+layout_mode = 2
+
+[node name="VBoxSlider" type="VBoxContainer" parent="Margin/VBox/HBox/HBox/VBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VolumeSlider" parent="Margin/VBox/HBox/HBox/VBox/HBox/VBoxSlider" instance=ExtResource("3_lcuyv")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2

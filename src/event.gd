@@ -13,5 +13,6 @@ signal ground_stopped_colliding
 signal ground_started_colliding
 signal pipe_started_colliding
 
+signal set_mute(mute: bool)
 signal set_volume(linear_volume: float)
 signal hit_sound_finished
