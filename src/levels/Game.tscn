@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmmxf7dx8r0am"]
+[gd_scene load_steps=8 format=3 uid="uid://bmmxf7dx8r0am"]
 
 [ext_resource type="Script" path="res://levels/game.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d0b0gclqaitxk" path="res://levels/world/sprites/background/background_1.png" id="2_unep0"]
 [ext_resource type="PackedScene" uid="uid://oq25ayamluoa" path="res://entities/actors/player/Player.tscn" id="3"]
-[ext_resource type="AudioStream" uid="uid://cqr0lxl2en1vw" path="res://sfx/point.wav" id="5"]
 [ext_resource type="PackedScene" path="res://levels/detectors/ceiling_detector/CeilingDetector.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://b6vp8s72wr360" path="res://levels/world/WorldTileMap.tscn" id="6_pau6a"]
 [ext_resource type="PackedScene" uid="uid://5a8flj2a2trl" path="res://levels/detectors/world_detector/WorldDetector.tscn" id="7"]
-[ext_resource type="AudioStream" uid="uid://bvy8k8bmc04m5" path="res://sfx/swoosh.wav" id="8"]
+[ext_resource type="PackedScene" uid="uid://ejsuh14avidq" path="res://audio/Audio.tscn" id="9_147g6"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1")
@@ -27,8 +26,4 @@ position = Vector2(0, -140)
 
 [node name="Camera3D" type="Camera2D" parent="."]
 
-[node name="StartSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8")
-
-[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5")
+[node name="Audio" parent="." instance=ExtResource("9_147g6")]

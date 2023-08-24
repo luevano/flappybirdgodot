@@ -7,22 +7,17 @@ extends Node2D
 @onready var ceiling_detector: Area2D = $CeilingDetector
 @onready var world_detector: Node2D = $WorldDetector
 @onready var camera: Camera2D = $Camera3D
-@onready var start_sound: AudioStreamPlayer = $StartSound
-@onready var score_sound: AudioStreamPlayer = $ScoreSound
 
 @onready var high_score: int = SavedData.get_high_score()
 var score: int = 0
 
-var _game_scale: float = ProjectSettings.get_setting("application/config/game_scale")
 var player_speed: float
 var is_game_running: bool = false
 
 
 func _ready() -> void:
-	# this is a property from Node2D, this and all children will be scaled
-	scale = Vector2(_game_scale, _game_scale)
 	# so we move at the actual speed of the player
-	player_speed = player.SPEED / _game_scale
+	player_speed = player.SPEED
 
 	Event.player_death.connect(_on_player_death)
 	Event.player_score.connect(_on_player_score)
@@ -37,7 +32,6 @@ func _input(event: InputEvent) -> void:
 		_set_processing_to(true)
 		is_game_running = true
 		Event.game_start.emit()
-		start_sound.play()
 
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
@@ -74,7 +68,6 @@ func _on_player_score() -> void:
 		SavedData.set_new_high_score(high_score)
 		SavedData.save_data()
 	Event.new_score.emit(score, high_score)
-	score_sound.play()
 
 
 func _on_CeilingDetector_body_entered(body: Node2D) -> void:

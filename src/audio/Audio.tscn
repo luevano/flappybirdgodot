@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://ejsuh14avidq"]
+
+[ext_resource type="Script" path="res://audio/audio.gd" id="1_yp2jf"]
+[ext_resource type="AudioStream" uid="uid://bvy8k8bmc04m5" path="res://audio/sfx/swoosh.wav" id="2_bc4d6"]
+[ext_resource type="AudioStream" uid="uid://cqr0lxl2en1vw" path="res://audio/sfx/point.wav" id="3_vant8"]
+[ext_resource type="AudioStream" uid="uid://b2l2dhjlss1l" path="res://audio/sfx/wing.wav" id="4_utkus"]
+[ext_resource type="AudioStream" uid="uid://cl2fn0ojoo2xo" path="res://audio/sfx/die.wav" id="5_y1uty"]
+[ext_resource type="AudioStream" uid="uid://bdrrr7nrox7kf" path="res://audio/sfx/hit.wav" id="6_fqj82"]
+
+[node name="Audio" type="Node2D"]
+script = ExtResource("1_yp2jf")
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bc4d6")
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vant8")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_utkus")
+
+[node name="DeadSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y1uty")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fqj82")

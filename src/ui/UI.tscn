@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://3a8ndjqtt72v"]
 
-[ext_resource type="FontFile" uid="uid://dx84vyfn41p2j" path="res://fonts/Silver.ttf" id="2_f1xmh"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/PixelText.tscn" id="3_3n4a0"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("3")
@@ -15,45 +15,47 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
 
+[node name="DebugContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="FPS" parent="MarginContainer/DebugContainer" instance=ExtResource("3_3n4a0")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+
 [node name="InfoContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 250
+theme_override_constants/separation = 20
 
 [node name="ScoreContainer" type="VBoxContainer" parent="MarginContainer/InfoContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Score" type="Label" parent="MarginContainer/InfoContainer/ScoreContainer"]
+[node name="Score" parent="MarginContainer/InfoContainer/ScoreContainer" instance=ExtResource("3_3n4a0")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_f1xmh")
-theme_override_font_sizes/font_size = 128
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HighScore" type="Label" parent="MarginContainer/InfoContainer/ScoreContainer"]
+[node name="HighScore" parent="MarginContainer/InfoContainer/ScoreContainer" instance=ExtResource("3_3n4a0")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_f1xmh")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "High score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="StartGame" type="Label" parent="MarginContainer/InfoContainer"]
+[node name="StartGame" parent="MarginContainer/InfoContainer" instance=ExtResource("3_3n4a0")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_f1xmh")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Press space to start"
-
-[node name="DebugContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="FPS" type="Label" parent="MarginContainer/DebugContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_f1xmh")
-theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VersionContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="Version" type="Label" parent="MarginContainer/VersionContainer"]
+[node name="Version" parent="MarginContainer/VersionContainer" instance=ExtResource("3_3n4a0")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_f1xmh")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10

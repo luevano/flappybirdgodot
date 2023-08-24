@@ -1,12 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://oq25ayamluoa"]
+[gd_scene load_steps=19 format=3 uid="uid://oq25ayamluoa"]
 
 [ext_resource type="Script" path="res://entities/actors/player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bktcuc17kucpr" path="res://entities/actors/player/sprites/bird_3.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dkkxtdy5qqaf0" path="res://entities/actors/player/sprites/bird_1.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://6bhp2i1c1a0w" path="res://entities/actors/player/sprites/bird_2.png" id="4"]
-[ext_resource type="AudioStream" uid="uid://b2l2dhjlss1l" path="res://sfx/wing.wav" id="5"]
-[ext_resource type="AudioStream" uid="uid://cl2fn0ojoo2xo" path="res://sfx/die.wav" id="6"]
-[ext_resource type="AudioStream" uid="uid://bdrrr7nrox7kf" path="res://sfx/hit.wav" id="7"]
 
 [sub_resource type="AtlasTexture" id="2"]
 atlas = ExtResource("3")
@@ -123,12 +120,3 @@ animation = &"bird_1"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
-
-[node name="JumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5")
-
-[node name="DeadSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6")
-
-[node name="HitSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7")
