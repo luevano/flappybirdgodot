@@ -5,5 +5,5 @@
 [node name="SilverLabel" type="Label"]
 offset_right = 51.0
 offset_bottom = 24.0
-text = "Test text"
+text = "Text"
 label_settings = ExtResource("1_58bmo")

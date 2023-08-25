@@ -72,3 +72,4 @@ func _on_player_score() -> void:
 
 func _on_CeilingDetector_body_entered(body: Node2D) -> void:
 	Event.player_collide.emit()
+	ceiling_detector.set_collision_mask_value(1, false)

@@ -2,6 +2,7 @@ class_name WorldTileMap
 extends TileMap
 
 @export_range(2, 20, 2) var PIPE_SEP: int = 6
+@export var detector_scene: PackedScene
 
 var ground_tiles_amount: int = 3
 var ground_bottom_tile: Vector2i = Vector2i(4, 5)
@@ -22,7 +23,6 @@ const _initial_new_pipe_x: int = 11
 var new_pipe_position: Vector2i = Vector2i(_initial_new_pipe_x, _pipe_level_y)
 var pipe_stack: Array
 
-var detector_scene: PackedScene = preload("res://levels/detectors/score_detector/ScoreDetector.tscn")
 var detector_offset: Vector2 = Vector2(0.0, (256.0 / 2.0) - (16.0 / 2.0))
 var detector_stack: Array
 

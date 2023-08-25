@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://3a8ndjqtt72v"]
+[gd_scene load_steps=7 format=3 uid="uid://3a8ndjqtt72v"]
 
 [ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/silver_label/SilverLabel.tscn" id="2_lwo6p"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://lwr786l78x8t" path="res://ui/volume_button/VolumeButton.tscn" id="3_0rkh0"]
 [ext_resource type="PackedScene" uid="uid://d3dtvj6vhm53" path="res://ui/volume_slider/VolumeSlider.tscn" id="3_lcuyv"]
+[ext_resource type="FontFile" uid="uid://dx84vyfn41p2j" path="res://ui/silver_label/Silver.ttf" id="5_nt015"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7iii5"]
+font = ExtResource("5_nt015")
+font_size = 54
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("version_label", "score_label", "high_score_label", "start_game_label")]
 script = ExtResource("3")
 version_label = NodePath("Margin/VBox/HBoxVersion/Version")
 score_label = NodePath("Margin/VBox/VBox/Score")
-high_score_label = NodePath("Margin/VBox/VBox/HighScore")
-start_game_label = NodePath("Margin/VBox/VBox/StartGame")
+high_score_label = NodePath("Margin/VBox/VBox/VBox/HighScore")
+start_game_label = NodePath("Margin/VBox/VBox/VBox/StartGame")
 
 [node name="Margin" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -46,16 +53,22 @@ size_flags_vertical = 3
 [node name="Score" parent="Margin/VBox/VBox" instance=ExtResource("2_lwo6p")]
 layout_mode = 2
 text = "0"
+label_settings = SubResource("LabelSettings_7iii5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScore" parent="Margin/VBox/VBox" instance=ExtResource("2_lwo6p")]
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HighScore" parent="Margin/VBox/VBox/VBox" instance=ExtResource("2_lwo6p")]
 layout_mode = 2
 text = "High score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartGame" parent="Margin/VBox/VBox" instance=ExtResource("2_lwo6p")]
+[node name="StartGame" parent="Margin/VBox/VBox/VBox" instance=ExtResource("2_lwo6p")]
 layout_mode = 2
 text = "Press <space> to start"
 horizontal_alignment = 1
@@ -67,5 +80,5 @@ size_flags_horizontal = 0
 
 [node name="Version" parent="Margin/VBox/HBoxVersion" instance=ExtResource("2_lwo6p")]
 layout_mode = 2
-text = "v0.0.0"
+text = "v0.0"
 vertical_alignment = 2

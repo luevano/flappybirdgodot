@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://levels/game.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d0b0gclqaitxk" path="res://levels/world/sprites/background/background_1.png" id="2_unep0"]
 [ext_resource type="PackedScene" uid="uid://oq25ayamluoa" path="res://entities/actors/player/Player.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://levels/detectors/ceiling_detector/CeilingDetector.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bewbq5rtnqjbp" path="res://levels/detectors/CeilingDetector.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://b6vp8s72wr360" path="res://levels/world/WorldTileMap.tscn" id="6_pau6a"]
 [ext_resource type="PackedScene" uid="uid://5a8flj2a2trl" path="res://levels/detectors/world_detector/WorldDetector.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://ejsuh14avidq" path="res://audio/Audio.tscn" id="9_147g6"]
@@ -16,7 +16,7 @@ texture = ExtResource("2_unep0")
 offset = Vector2(0, -10)
 
 [node name="CeilingDetector" parent="." instance=ExtResource("6")]
-position = Vector2(0, -140)
+position = Vector2(0, -133)
 
 [node name="WorldDetector" parent="." instance=ExtResource("7")]
 
