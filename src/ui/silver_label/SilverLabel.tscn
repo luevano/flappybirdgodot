@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci2aey7acs5n5"]
+
+[ext_resource type="LabelSettings" uid="uid://bsnopvg7cnvmb" path="res://ui/silver_label/SilverLabelSettings.tres" id="1_58bmo"]
+
+[node name="SilverLabel" type="Label"]
+offset_right = 51.0
+offset_bottom = 24.0
+text = "Test text"
+label_settings = ExtResource("1_58bmo")

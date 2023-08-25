@@ -1,17 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://3a8ndjqtt72v"]
 
+[ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/silver_label/SilverLabel.tscn" id="2_lwo6p"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://lwr786l78x8t" path="res://ui/volume_button/VolumeButton.tscn" id="3_0rkh0"]
-[ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/PixelText.tscn" id="3_3n4a0"]
 [ext_resource type="PackedScene" uid="uid://d3dtvj6vhm53" path="res://ui/volume_slider/VolumeSlider.tscn" id="3_lcuyv"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("fps_label", "version_label", "score_label", "high_score_label", "start_game_label")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("version_label", "score_label", "high_score_label", "start_game_label")]
 script = ExtResource("3")
-fps_label = NodePath("Margin/VBox/VBox/FPS")
-version_label = NodePath("Margin/VBox/HBox/HBox/HBox/Version")
-score_label = NodePath("Margin/VBox/VBox/VBox/Score")
-high_score_label = NodePath("Margin/VBox/VBox/VBox/HighScore")
-start_game_label = NodePath("Margin/VBox/VBox/VBox/StartGame")
+version_label = NodePath("Margin/VBox/HBoxVersion/Version")
+score_label = NodePath("Margin/VBox/VBox/Score")
+high_score_label = NodePath("Margin/VBox/VBox/HighScore")
+start_game_label = NodePath("Margin/VBox/VBox/StartGame")
 
 [node name="Margin" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -22,87 +21,51 @@ grow_vertical = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VolumeButton" parent="Margin/VBox/HBox" instance=ExtResource("3_0rkh0")]
+layout_mode = 2
+
+[node name="Center" type="CenterContainer" parent="Margin/VBox/HBox"]
+layout_mode = 2
+
+[node name="VolumeSlider" parent="Margin/VBox/HBox/Center" instance=ExtResource("3_lcuyv")]
 layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="Margin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
 
-[node name="FPS" parent="Margin/VBox/VBox" instance=ExtResource("3_3n4a0")]
+[node name="Score" parent="Margin/VBox/VBox" instance=ExtResource("2_lwo6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-
-[node name="VBox" type="VBoxContainer" parent="Margin/VBox/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Score" parent="Margin/VBox/VBox/VBox" instance=ExtResource("3_3n4a0")]
-layout_mode = 2
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScore" parent="Margin/VBox/VBox/VBox" instance=ExtResource("3_3n4a0")]
+[node name="HighScore" parent="Margin/VBox/VBox" instance=ExtResource("2_lwo6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
 text = "High score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartGame" parent="Margin/VBox/VBox/VBox" instance=ExtResource("3_3n4a0")]
+[node name="StartGame" parent="Margin/VBox/VBox" instance=ExtResource("2_lwo6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Press space to start"
+text = "Press <space> to start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
+[node name="HBoxVersion" type="HBoxContainer" parent="Margin/VBox"]
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 0
 
-[node name="HBox" type="HBoxContainer" parent="Margin/VBox/HBox"]
+[node name="Version" parent="Margin/VBox/HBoxVersion" instance=ExtResource("2_lwo6p")]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="HBox" type="HBoxContainer" parent="Margin/VBox/HBox/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Version" parent="Margin/VBox/HBox/HBox/HBox" instance=ExtResource("3_3n4a0")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
 text = "v0.0.0"
-vertical_alignment = 1
-
-[node name="VBox" type="VBoxContainer" parent="Margin/VBox/HBox/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="HBox" type="HBoxContainer" parent="Margin/VBox/HBox/HBox/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="VBoxButton" type="VBoxContainer" parent="Margin/VBox/HBox/HBox/VBox/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="VolumeButton" parent="Margin/VBox/HBox/HBox/VBox/HBox/VBoxButton" instance=ExtResource("3_0rkh0")]
-layout_mode = 2
-
-[node name="VBoxSlider" type="VBoxContainer" parent="Margin/VBox/HBox/HBox/VBox/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="VolumeSlider" parent="Margin/VBox/HBox/HBox/VBox/HBox/VBoxSlider" instance=ExtResource("3_lcuyv")]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
+vertical_alignment = 2

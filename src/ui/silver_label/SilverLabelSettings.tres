@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bsnopvg7cnvmb"]
+
+[ext_resource type="FontFile" uid="uid://dx84vyfn41p2j" path="res://ui/silver_label/Silver.ttf" id="1_sdcg4"]
+
+[resource]
+font = ExtResource("1_sdcg4")
+font_size = 18
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
