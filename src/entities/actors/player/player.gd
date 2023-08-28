@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = SPEED
 	velocity.y += GRAVITY * delta
 
-	if Input.is_action_just_pressed("jump") and not dead:
+	if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("touch")) and not dead:
 		velocity.y = -JUMP_VELOCITY
 		Event.player_jump.emit()
 

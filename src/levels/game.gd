@@ -2,7 +2,7 @@ class_name Game
 extends Node2D
 
 @onready var player: Player = $Player
-@onready var background: Sprite2D= $Background
+@onready var background: TouchScreenButton = $Background
 @onready var world_tm: WorldTileMap = $WorldTileMap
 @onready var ceiling_detector: Area2D = $CeilingDetector
 @onready var world_detector: Node2D = $WorldDetector
@@ -13,6 +13,7 @@ var score: int = 0
 
 var player_speed: float
 var is_game_running: bool = false
+var is_game_over: bool = false
 
 
 func _ready() -> void:
@@ -28,12 +29,12 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not is_game_running and event.is_action_pressed("jump"):
+	if not is_game_running and (event.is_action_pressed("jump") or event.is_action_pressed("touch")):
 		_set_processing_to(true)
 		is_game_running = true
 		Event.game_start.emit()
 
-	if event.is_action_pressed("restart"):
+	if is_game_running and (event.is_action_pressed("restart") or (is_game_over and event.is_action_pressed("touch"))):
 		get_tree().reload_current_scene()
 
 
@@ -58,6 +59,7 @@ func _set_processing_to(on_off: bool, include_player: bool = true) -> void:
 
 func _on_player_death() -> void:
 	_set_processing_to(false, false)
+	is_game_over = true
 	Event.game_over.emit()
 
 
