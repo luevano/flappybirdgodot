@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://3a8ndjqtt72v"]
+[gd_scene load_steps=8 format=3 uid="uid://3a8ndjqtt72v"]
 
 [ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/silver_label/SilverLabel.tscn" id="2_lwo6p"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="3"]
@@ -11,6 +11,9 @@ font = ExtResource("5_nt015")
 font_size = 54
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njvdr"]
+size = Vector2(144, 180)
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("version_label", "score_label", "high_score_label", "start_game_label")]
 script = ExtResource("3")
@@ -82,3 +85,8 @@ size_flags_horizontal = 0
 layout_mode = 2
 text = "v0.0"
 vertical_alignment = 2
+
+[node name="Touch" type="TouchScreenButton" parent="."]
+position = Vector2(72, 118)
+shape = SubResource("RectangleShape2D_njvdr")
+action = "touch"

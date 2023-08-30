@@ -2,7 +2,7 @@ class_name Game
 extends Node2D
 
 @onready var player: Player = $Player
-@onready var background: TouchScreenButton = $Background
+# @onready var background: Sprite2D = $Background
 @onready var world_tm: WorldTileMap = $WorldTileMap
 @onready var ceiling_detector: Area2D = $CeilingDetector
 @onready var world_detector: Node2D = $WorldDetector
@@ -41,7 +41,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	ceiling_detector.move_local_x(player_speed * delta)
 	world_detector.move_local_x(player_speed * delta)
-	background.move_local_x(player_speed * delta)
+	# background.move_local_x(player_speed * delta)
 	camera.move_local_x(player_speed * delta)
 
 

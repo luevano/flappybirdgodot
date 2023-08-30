@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boknqqxck4vbq"
-path="res://.godot/imported/background_6.png-51089c983252820a1f0cb721bb26dca2.ctex"
+uid="uid://bm0rmlcarwvsu"
+path="res://.godot/imported/background_5.png-62fd4c563f07313a167e965ff3d3fa73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/world/sprites/background/background_6.png"
-dest_files=["res://.godot/imported/background_6.png-51089c983252820a1f0cb721bb26dca2.ctex"]
+source_file="res://levels/background/sprites/background/background_5.png"
+dest_files=["res://.godot/imported/background_5.png-62fd4c563f07313a167e965ff3d3fa73.ctex"]
 
 [params]
 
