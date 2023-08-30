@@ -14,8 +14,8 @@ config/name="FlappyBirdGodot"
 config/description="FlappyBird clone made in Godot."
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.1")
-config/icon="res://icons/game.png"
-config/windows_native_icon="res://icons/game.ico"
+config/icon="res://assets/icon.png"
+config/windows_native_icon="res://assets/icon.ico"
 
 [autoload]
 
