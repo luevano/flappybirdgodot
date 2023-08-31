@@ -20,7 +20,7 @@ config/windows_native_icon="res://assets/icon.ico"
 [autoload]
 
 Event="*res://event.gd"
-SavedData="*res://saved_data.gd"
+Data="*res://data.gd"
 Global="*res://global.gd"
 
 [debug]

@@ -4,7 +4,7 @@ extends TextureButton
 @export var icon_volume: CompressedTexture2D
 @export var icon_volume_mute: CompressedTexture2D
 
-@onready var _mute: bool = SavedData.get_mute()
+@onready var _mute: bool = Data.get_mute()
 
 var _opaque: Color = Color(1, 1, 1, 1)
 var _translucent: Color = Color(1, 1, 1, 0.5)

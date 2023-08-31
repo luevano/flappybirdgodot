@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://baycj4aqkjtfw"]
+
+[ext_resource type="Script" path="res://detectors/detectors.gd" id="1_jdp3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tm27c"]
+size = Vector2(144, 10)
+
+[node name="Detectors" type="Node2D"]
+script = ExtResource("1_jdp3u")
+
+[node name="Ceiling" type="Area2D" parent="."]
+position = Vector2(0, -133)
+collision_layer = 8
+
+[node name="Collision" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("RectangleShape2D_tm27c")
+
+[node name="NewGround" type="RayCast2D" parent="."]
+position = Vector2(152, -200)
+target_position = Vector2(0, 400)
+collision_mask = 2
+
+[node name="OldGround" type="RayCast2D" parent="."]
+position = Vector2(-152, -200)
+target_position = Vector2(0, 400)
+collision_mask = 2
+
+[node name="OldPipe" type="RayCast2D" parent="."]
+position = Vector2(-152, -200)
+target_position = Vector2(0, 400)
+collision_mask = 4

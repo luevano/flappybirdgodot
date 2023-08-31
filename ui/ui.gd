@@ -6,7 +6,7 @@ extends CanvasLayer
 @export var high_score_label: Label
 @export var start_game_label: Label
 
-@onready var _initial_high_score: int = SavedData.get_high_score()
+@onready var _initial_high_score: int = Data.get_high_score()
 
 
 func _ready() -> void:

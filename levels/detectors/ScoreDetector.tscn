@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfhb8n6fgyqmm"]
-
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(2.5, 256)
-
-[node name="ScoreDetector" type="Area2D"]
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("1")

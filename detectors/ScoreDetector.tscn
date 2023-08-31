@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfhb8n6fgyqmm"]
+
+[ext_resource type="Script" path="res://detectors/score_detector.gd" id="1_wr2pg"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(2.5, 256)
+
+[node name="ScoreDetector" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_wr2pg")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("1")

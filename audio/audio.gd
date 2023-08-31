@@ -10,8 +10,8 @@ extends Node2D
 @onready var hit_sound: AudioStreamPlayer = $HitSound
 @onready var dead_sound: AudioStreamPlayer = $DeadSound
 
-@onready var _mute: bool = SavedData.get_mute()
-@onready var _volume: float = SavedData.get_volume()
+@onready var _mute: bool = Data.get_mute()
+@onready var _volume: float = Data.get_volume()
 
 
 func _ready():
@@ -30,15 +30,15 @@ func _ready():
 
 func _on_set_mute(mute: bool) -> void:
 	AudioServer.set_bus_mute(_bus, mute)
-	SavedData.set_mute(mute)
-	SavedData.save_data()
+	Data.set_mute(mute)
+	Data.save_data()
 
 
 func _on_set_volume(linear_volume: float) -> void:
 	var db_volume: float = linear_to_db(linear_volume)
 	AudioServer.set_bus_volume_db(_bus, db_volume)
-	SavedData.set_volume(linear_volume)
-	SavedData.save_data()
+	Data.set_volume(linear_volume)
+	Data.save_data()
 
 
 func _on_game_start() -> void:

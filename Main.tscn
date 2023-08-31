@@ -1,16 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://bidfr2vybn1p7"]
+[gd_scene load_steps=8 format=3 uid="uid://bidfr2vybn1p7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://bmmxf7dx8r0am" path="res://levels/Game.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://3a8ndjqtt72v" path="res://ui/UI.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://yx2fk2qxhgv6" path="res://levels/background/Background.tscn" id="4_c8ufw"]
+[ext_resource type="PackedScene" uid="uid://yx2fk2qxhgv6" path="res://background/Background.tscn" id="4_c8ufw"]
+[ext_resource type="PackedScene" uid="uid://ejsuh14avidq" path="res://audio/Audio.tscn" id="4_ehoq0"]
+[ext_resource type="PackedScene" uid="uid://oq25ayamluoa" path="res://player/Player.tscn" id="4_hvaq7"]
+[ext_resource type="PackedScene" uid="uid://b6vp8s72wr360" path="res://world_tile_map/WorldTileMap.tscn" id="5_xr1hx"]
+[ext_resource type="PackedScene" uid="uid://baycj4aqkjtfw" path="res://detectors/Detectors.tscn" id="7_mkiqv"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
 
-[node name="UI" parent="." instance=ExtResource("3")]
+[node name="WorldTileMap" parent="." instance=ExtResource("5_xr1hx")]
 
-[node name="Game" parent="." instance=ExtResource("2")]
-position = Vector2(72, 128)
+[node name="Detectors" parent="." instance=ExtResource("7_mkiqv")]
+
+[node name="Player" parent="." instance=ExtResource("4_hvaq7")]
+
+[node name="Camera3D" type="Camera2D" parent="."]
 
 [node name="Background" parent="." instance=ExtResource("4_c8ufw")]
+
+[node name="UI" parent="." instance=ExtResource("3")]
+
+[node name="Audio" parent="." instance=ExtResource("4_ehoq0")]

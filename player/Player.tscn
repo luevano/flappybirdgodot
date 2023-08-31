@@ -1,0 +1,122 @@
+[gd_scene load_steps=19 format=3 uid="uid://oq25ayamluoa"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bktcuc17kucpr" path="res://player/sprites/bird_3.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dkkxtdy5qqaf0" path="res://player/sprites/bird_1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://6bhp2i1c1a0w" path="res://player/sprites/bird_2.png" id="4"]
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
+"loop": true,
+"name": &"bird_1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}, {
+"duration": 1.0,
+"texture": SubResource("9")
+}],
+"loop": true,
+"name": &"bird_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("10")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}],
+"loop": true,
+"name": &"bird_3",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 7.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("14")
+animation = &"bird_1"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("1")

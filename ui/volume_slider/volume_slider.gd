@@ -1,7 +1,7 @@
 class_name VolumeSlider
 extends HSlider
 
-@onready var _volume: float = SavedData.get_volume()
+@onready var _volume: float = Data.get_volume()
 
 
 func _ready() -> void:
