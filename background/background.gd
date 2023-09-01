@@ -1,18 +1,25 @@
 class_name Background
 extends Node2D
 
-@export var background_texture: CompressedTexture2D
+@export_category("Background")
 @export var background_orig: Sprite2D
-@export_range(10.0, 100.0, 2.0) var SPEED: float = 20.0
+@export var background_texture: CompressedTexture2D
+@export_range(10.0, 100.0, 2.0) var BG_SPEED: float = 20.0
 
-var texture_size: Vector2
+@export_category("Foreground")
+@export var foreground_orig: Sprite2D
+@export var foreground_texture: CompressedTexture2D
+@export_range(10.0, 100.0, 2.0) var FG_SPEED: float = 35.0
+
+# assumed both textures have the same size, at least on x
+@onready var size_x: float = background_texture.get_size().x
 var backgrounds: Array[Sprite2D]
+var foregrounds: Array[Sprite2D]
 var init_x: float
 # I want this to return 0 on int(bg_0_first),
 #	this determines the position of the bg 0 in the scrolling
 var bg_0_first: bool = !true
-var i0: int = int(bg_0_first)
-var i1: int = int(!bg_0_first)
+var fg_0_first: bool = !true
 
 
 func _ready():
@@ -22,30 +29,43 @@ func _ready():
 	Event.game_pause.connect(set_process)
 
 	background_orig.texture = background_texture
-	texture_size = background_orig.texture.get_size()
-	init_x = (texture_size.x / 2.0) - (Global.INIT_WINDOW_SIZE.x / 2.0)
-	background_orig.position.x = init_x
+	foreground_orig.texture = foreground_texture
+	init_x = (size_x / 2.0) - (Global.INIT_WINDOW_SIZE.x / 2.0)
 
-	backgrounds.append(background_orig.duplicate())
-	backgrounds.append(background_orig.duplicate())
-	backgrounds[1].position.x += texture_size.x
-	print(backgrounds[0].position.x)
-	print(backgrounds[1].position.x)
-
-	add_child(backgrounds[0])
-	add_child(backgrounds[1])
-	background_orig.visible = false
+	backgrounds = _create_sprites(background_orig)
+	foregrounds = _create_sprites(foreground_orig)
 
 
 func _process(delta: float):
-	for background in backgrounds:
-		background.move_local_x(- SPEED * delta)
+	_move_sprites(backgrounds, BG_SPEED)
+	_move_sprites(foregrounds, FG_SPEED)
+	bg_0_first = _reposition_sprites(backgrounds, bg_0_first)
+	fg_0_first = _reposition_sprites(foregrounds, fg_0_first)
 
-	# moves the sprite that just exited the screen next to the upcoming sprite
-	if backgrounds[i0].position.x <= init_x - texture_size.x:
-		print(backgrounds[0].position.x)
-		backgrounds[i0].position.x = backgrounds[i1].position.x + texture_size.x
+
+func _create_sprites(sprite: Sprite2D) -> Array[Sprite2D]:
+	var sprites: Array[Sprite2D] = []
+	sprite.position.x = init_x
+
+	sprites.append(sprite.duplicate())
+	sprites.append(sprite.duplicate())
+	sprites[0].position.x += size_x
+
+	add_child(sprites[0])
+	add_child(sprites[1])
+	sprite.visible = false
+	return sprites
+
+
+func _move_sprites(sprites: Array[Sprite2D], speed: float):
+	for sprite in sprites:
+		sprite.move_local_x(- speed * get_process_delta_time())
+
+
+func _reposition_sprites(sprites: Array[Sprite2D], ifirst: bool) -> bool:
+	if sprites[int(ifirst)].position.x <= init_x - size_x:
+		print(ifirst)
+		sprites[int(ifirst)].position.x = sprites[int(!ifirst)].position.x + size_x
 		# update indexes
-		bg_0_first = !bg_0_first
-		i0 = int(bg_0_first)
-		i1 = int(!bg_0_first)
+		return !ifirst
+	return ifirst
