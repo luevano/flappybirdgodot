@@ -1,5 +1,5 @@
 class_name Background
-extends CanvasLayer
+extends Node2D
 
 @export var background_texture: CompressedTexture2D
 @export var background_orig: Sprite2D
@@ -7,6 +7,7 @@ extends CanvasLayer
 
 var texture_size: Vector2
 var backgrounds: Array[Sprite2D]
+var init_x: float
 # I want this to return 0 on int(bg_0_first),
 #	this determines the position of the bg 0 in the scrolling
 var bg_0_first: bool = !true
@@ -22,10 +23,14 @@ func _ready():
 
 	background_orig.texture = background_texture
 	texture_size = background_orig.texture.get_size()
+	init_x = (texture_size.x / 2.0) - (Global.INIT_WINDOW_SIZE.x / 2.0)
+	background_orig.position.x = init_x
 
 	backgrounds.append(background_orig.duplicate())
 	backgrounds.append(background_orig.duplicate())
-	backgrounds[1].position = background_orig.position + Vector2(texture_size.x, 0.0)
+	backgrounds[1].position.x += texture_size.x
+	print(backgrounds[0].position.x)
+	print(backgrounds[1].position.x)
 
 	add_child(backgrounds[0])
 	add_child(backgrounds[1])
@@ -37,7 +42,8 @@ func _process(delta: float):
 		background.move_local_x(- SPEED * delta)
 
 	# moves the sprite that just exited the screen next to the upcoming sprite
-	if backgrounds[i0].position.x <= - background_orig.position.x:
+	if backgrounds[i0].position.x <= init_x - texture_size.x:
+		print(backgrounds[0].position.x)
 		backgrounds[i0].position.x = backgrounds[i1].position.x + texture_size.x
 		# update indexes
 		bg_0_first = !bg_0_first

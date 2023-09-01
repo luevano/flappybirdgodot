@@ -3,12 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://d0b0gclqaitxk" path="res://background/sprites/background_1.png" id="1_cst4j"]
 [ext_resource type="Script" path="res://background/background.gd" id="1_i4ulv"]
 
-[node name="Background" type="CanvasLayer" node_paths=PackedStringArray("background_orig")]
-layer = -1
+[node name="Background" type="Node2D" node_paths=PackedStringArray("background_orig")]
 script = ExtResource("1_i4ulv")
 background_texture = ExtResource("1_cst4j")
 background_orig = NodePath("Background")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(128, 128)
 texture = ExtResource("1_cst4j")

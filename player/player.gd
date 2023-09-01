@@ -1,7 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-@export_range(1.0, 150.0, 1.0) var SPEED: float = 60.0
 @export_range(0.01, 100.0, 0.01) var ROT_SPEED: float = 10.0
 @export_range(1.0, 300.0, 1.0) var JUMP_VELOCITY: float = 160.0
 @export_range(1.0, 100.0, 1.0) var DEATH_JUMP_VELOCITY: float = 150.0
@@ -22,7 +21,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity.x = SPEED
 	velocity.y += GRAVITY * delta
 
 	if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("touch")) and not dead:
@@ -58,9 +56,7 @@ func _stop_sprite(stop: bool = true) -> void:
 func _on_player_collide() -> void:
 	set_collision_mask_value(3, false)
 	dead = true
-	SPEED = 0.0
 	Event.player_death.emit()
 	velocity.y = -DEATH_JUMP_VELOCITY
 	set_velocity(velocity)
 	move_and_slide()
-	velocity = velocity

@@ -1,6 +1,7 @@
 class_name WorldTileMap
 extends TileMap
 
+@export_range(1.0, 150.0, 1.0) var SPEED: float = 60.0
 @export_range(2, 20, 2) var PIPE_SEP: int = 6
 @export var detector_scene: PackedScene
 
@@ -27,9 +28,17 @@ var detector_offset: Vector2 = Vector2(0.0, (256.0 / 2.0) - (16.0 / 2.0))
 var detector_stack: Array
 
 func _ready() -> void:
+	set_physics_process(false)
+	Event.game_start.connect(set_physics_process.bind(true))
+	Event.game_over.connect(set_physics_process.bind(false))
+	Event.game_pause.connect(set_physics_process)
 	Event.ground_stopped_colliding.connect(_on_ground_stopped_colliding)
 	Event.ground_started_colliding.connect(_on_ground_started_colliding)
 	Event.pipe_started_colliding.connect(_on_pipe_started_colliding)
+
+
+func _physics_process(delta: float) -> void:
+	move_local_x(- SPEED * delta)
 
 
 func _place_new_ground() -> void:
