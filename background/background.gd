@@ -3,16 +3,16 @@ extends Node2D
 
 @export_category("Background")
 @export var background_orig: Sprite2D
-@export var background_texture: CompressedTexture2D
+@export var background_textures: Array[CompressedTexture2D]
 @export_range(10.0, 100.0, 2.0) var BG_SPEED: float = 20.0
 
 @export_category("Foreground")
 @export var foreground_orig: Sprite2D
-@export var foreground_texture: CompressedTexture2D
+@export var foreground_textures: Array[CompressedTexture2D]
 @export_range(10.0, 100.0, 2.0) var FG_SPEED: float = 35.0
 
 # assumed both textures have the same size, at least on x
-@onready var size_x: float = background_texture.get_size().x
+@onready var size_x: float = background_textures[0].get_size().x
 var backgrounds: Array[Sprite2D]
 var foregrounds: Array[Sprite2D]
 var init_x: float
@@ -28,8 +28,8 @@ func _ready():
 	Event.game_over.connect(set_process.bind(false))
 	Event.game_pause.connect(set_process)
 
-	background_orig.texture = background_texture
-	foreground_orig.texture = foreground_texture
+	background_orig.texture = background_textures[0]
+	foreground_orig.texture = foreground_textures[0]
 	init_x = (size_x / 2.0) - (Global.INIT_WINDOW_SIZE.x / 2.0)
 
 	backgrounds = _create_sprites(background_orig)

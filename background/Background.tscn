@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://yx2fk2qxhgv6"]
+[gd_scene load_steps=14 format=3 uid="uid://yx2fk2qxhgv6"]
 
 [ext_resource type="Script" path="res://background/background.gd" id="1_i4ulv"]
 [ext_resource type="Texture2D" uid="uid://cx8iuoy0aotps" path="res://background/sprites/background_1_bg.png" id="2_r2vfb"]
+[ext_resource type="Texture2D" uid="uid://cdv7nnhlgivdy" path="res://background/sprites/background_2_bg.png" id="3_6i2od"]
 [ext_resource type="Texture2D" uid="uid://cudcn7t7mgvdx" path="res://background/sprites/background_1_fg.png" id="3_blt77"]
+[ext_resource type="Texture2D" uid="uid://b7jfinude2wmx" path="res://background/sprites/background_3_bg.png" id="4_w1vdt"]
+[ext_resource type="Texture2D" uid="uid://ytx7rbw704cy" path="res://background/sprites/background_4_bg.png" id="5_614hh"]
+[ext_resource type="Texture2D" uid="uid://bapg6opsv6f07" path="res://background/sprites/background_5_bg.png" id="6_10rxt"]
+[ext_resource type="Texture2D" uid="uid://hiwwmretja42" path="res://background/sprites/background_6_bg.png" id="7_24y37"]
+[ext_resource type="Texture2D" uid="uid://b7n12mmtxpljh" path="res://background/sprites/background_2_fg.png" id="9_1di6p"]
+[ext_resource type="Texture2D" uid="uid://dj4bghtog8fss" path="res://background/sprites/background_3_fg.png" id="10_387lw"]
+[ext_resource type="Texture2D" uid="uid://dej26lhcftaal" path="res://background/sprites/background_4_fg.png" id="11_1pomw"]
+[ext_resource type="Texture2D" uid="uid://lsgmfwdmo5fp" path="res://background/sprites/background_5_fg.png" id="12_wqcv0"]
+[ext_resource type="Texture2D" uid="uid://2ylbso1h8adp" path="res://background/sprites/background_6_fg.png" id="13_xkqtr"]
 
 [node name="Background" type="Node2D" node_paths=PackedStringArray("background_orig", "foreground_orig")]
 script = ExtResource("1_i4ulv")
 background_orig = NodePath("Background")
-background_texture = ExtResource("2_r2vfb")
+background_textures = Array[CompressedTexture2D]([ExtResource("2_r2vfb"), ExtResource("3_6i2od"), ExtResource("4_w1vdt"), ExtResource("5_614hh"), ExtResource("6_10rxt"), ExtResource("7_24y37")])
 foreground_orig = NodePath("Foreground")
-foreground_texture = ExtResource("3_blt77")
+foreground_textures = Array[CompressedTexture2D]([ExtResource("3_blt77"), ExtResource("9_1di6p"), ExtResource("10_387lw"), ExtResource("11_1pomw"), ExtResource("12_wqcv0"), ExtResource("13_xkqtr")])
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("2_r2vfb")
