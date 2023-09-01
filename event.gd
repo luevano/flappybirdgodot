@@ -2,6 +2,7 @@ extends Node
 
 signal game_start
 signal game_over
+signal game_pause(pause: bool)
 signal new_score(score: int, high_score: int)
 
 signal player_jump

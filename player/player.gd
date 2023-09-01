@@ -14,6 +14,11 @@ var dead: bool = false
 
 
 func _ready() -> void:
+	set_physics_process(false)
+	# hacky way of setting process witout _on... function
+	Event.game_start.connect(set_physics_process.bind(true))
+	Event.game_pause.connect(set_physics_process)
+	Event.game_pause.connect(_stop_sprite)
 	Event.player_collide.connect(_on_player_collide)
 
 
@@ -44,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		Event.player_collide.emit()
 
 
-func _stop_sprite() -> void:
+func _stop_sprite(stop: bool = true) -> void:
 	if sprite.is_playing():
 		sprite.stop()
 	if sprite.frame != 0:

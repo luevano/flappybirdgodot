@@ -13,6 +13,9 @@ var pipe_now_colliding: bool = false
 
 
 func _ready():
+	Event.game_start.connect(set_physics_process.bind(true))
+	Event.game_over.connect(set_physics_process.bind(false))
+	Event.game_pause.connect(set_physics_process)
 	ceiling.area_entered.connect(_on_Ceiling_area_entered)
 
 
