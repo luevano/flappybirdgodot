@@ -15,7 +15,6 @@ var dead: bool = false
 
 func _ready() -> void:
 	set_physics_process(false)
-	# hacky way of setting process witout _on... function
 	Event.game_start.connect(set_physics_process.bind(true))
 	Event.game_pause.connect(set_physics_process)
 	Event.game_pause.connect(_stop_sprite)
