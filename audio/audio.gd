@@ -20,12 +20,12 @@ func _ready():
 
 	Event.set_mute.connect(_on_set_mute)
 	Event.set_volume.connect(_on_set_volume)
-	Event.game_start.connect(_on_game_start)
-	Event.player_jump.connect(_on_player_jump)
-	Event.player_score.connect(_on_player_score)
-	Event.player_collide.connect(_on_player_collide)
+	Event.game_start.connect(start_sound.play)
+	Event.player_jump.connect(jump_sound.play)
+	Event.player_score.connect(score_sound.play)
+	Event.player_collide.connect(hit_sound.play)
 	# play death sound after hit sound finishes
-	hit_sound.finished.connect(_on_HitSound_finished)
+	hit_sound.finished.connect(dead_sound.play)
 
 
 func _on_set_mute(mute: bool):
@@ -39,23 +39,3 @@ func _on_set_volume(linear_volume: float):
 	AudioServer.set_bus_volume_db(_bus, db_volume)
 	Data.set_volume(linear_volume)
 	Data.save_data()
-
-
-func _on_game_start():
-	start_sound.play()
-
-
-func _on_player_jump():
-	jump_sound.play()
-
-
-func _on_player_score():
-	score_sound.play()
-
-
-func _on_player_collide():
-	hit_sound.play()
-
-
-func _on_HitSound_finished():
-	dead_sound.play()

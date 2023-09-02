@@ -32,9 +32,9 @@ func _ready():
 	Event.game_start.connect(set_physics_process.bind(true))
 	Event.game_over.connect(set_physics_process.bind(false))
 	Event.game_pause.connect(set_physics_process)
-	Event.ground_stopped_colliding.connect(_on_ground_stopped_colliding)
-	Event.ground_started_colliding.connect(_on_ground_started_colliding)
-	Event.pipe_started_colliding.connect(_on_pipe_started_colliding)
+	Event.ground_stopped_colliding.connect(_place_new_ground)
+	Event.ground_started_colliding.connect(_remove_old_ground)
+	Event.pipe_started_colliding.connect(_remove_old_pipe)
 
 
 func _physics_process(delta: float):
@@ -47,6 +47,11 @@ func _place_new_ground():
 	set_cell(0, new_tile_position, 0, random_tile)
 	set_cell(0, new_tile_position + Vector2i.DOWN, 0, ground_bottom_tile)
 	new_tile_position += Vector2i.RIGHT
+
+	tiles_since_last_pipe += 1
+	if tiles_since_last_pipe == PIPE_SEP:
+		_place_new_pipe()
+		tiles_since_last_pipe = 0
 
 
 func _remove_old_ground():
@@ -81,20 +86,3 @@ func _remove_old_pipe():
 	var detector: Area2D = detector_stack.pop_front()
 	remove_child(detector)
 	detector.queue_free()
-
-
-func _on_ground_stopped_colliding():
-	_place_new_ground()
-
-	tiles_since_last_pipe += 1
-	if tiles_since_last_pipe == PIPE_SEP:
-		_place_new_pipe()
-		tiles_since_last_pipe = 0
-
-
-func _on_ground_started_colliding():
-	_remove_old_ground()
-
-
-func _on_pipe_started_colliding():
-	_remove_old_pipe()
