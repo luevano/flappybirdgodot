@@ -20,22 +20,22 @@ func _ready():
 	mouse_exited.connect(_on_mouse_exited)
 
 
-func _set_icon(mute: bool) -> void:
+func _set_icon(mute: bool):
 	if mute:
 		texture_normal = icon_volume_mute
 	else:
 		texture_normal = icon_volume
 
 
-func _on_toggled(_button_pressed: bool) -> void:
+func _on_toggled(_button_pressed: bool):
 	Event.set_mute.emit(_button_pressed)
 	_set_icon(_button_pressed)
 	release_focus()
 
 
-func _on_mouse_entered() -> void:
+func _on_mouse_entered():
 	modulate = _opaque
 
 
-func _on_mouse_exited() -> void:
+func _on_mouse_exited():
 	modulate = _translucent

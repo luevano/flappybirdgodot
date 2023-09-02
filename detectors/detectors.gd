@@ -16,13 +16,13 @@ func _ready():
 	ceiling.area_entered.connect(_on_Ceiling_area_entered)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float):
 	ground_was_colliding = _was_colliding(new_ground, ground_was_colliding, "ground_stopped_colliding")
 	ground_now_colliding = _now_colliding(old_ground, ground_now_colliding, "ground_started_colliding")
 	pipe_now_colliding = _now_colliding(old_pipe, pipe_now_colliding, "pipe_started_colliding")
 
 
-func _was_colliding(detector: RayCast2D, flag: bool, signal_name: String) -> bool:
+func _was_colliding(detector: RayCast2D, flag: bool, signal_name: String):
 	if detector.is_colliding():
 		return true
 	if flag:
@@ -31,7 +31,7 @@ func _was_colliding(detector: RayCast2D, flag: bool, signal_name: String) -> boo
 	return true
 
 
-func _now_colliding(detector: RayCast2D, flag: bool, signal_name: String) -> bool:
+func _now_colliding(detector: RayCast2D, flag: bool, signal_name: String):
 	if detector.is_colliding():
 		if not flag:
 			Event.emit_signal(signal_name)

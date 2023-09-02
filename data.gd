@@ -7,17 +7,17 @@ const CONFIG_SECTION: String = "config"
 var _data: ConfigFile
 
 
-func _ready() -> void:
+func _ready():
 	_load_data()
 
 
-func save_data() -> void:
+func save_data():
 	var err: int = _data.save(DATA_PATH)
 	if err != OK:
 		print("[ERROR] Cannot save data.")
 
 
-func set_new_high_score(high_score: int) -> void:
+func set_new_high_score(high_score: int):
 	_data.set_value(SCORE_SECTION, "high_score", high_score)
 
 
@@ -25,7 +25,7 @@ func get_high_score() -> int:
 	return _data.get_value(SCORE_SECTION, "high_score")
 
 
-func set_volume(volume: float) -> void:
+func set_volume(volume: float):
 	_data.set_value(CONFIG_SECTION, "volume", volume)
 
 
@@ -33,7 +33,7 @@ func get_volume() -> float:
 	return _data.get_value(CONFIG_SECTION, "volume")
 
 
-func set_mute(mute: bool) -> void:
+func set_mute(mute: bool):
 	_data.set_value(CONFIG_SECTION, "mute", mute)
 
 
@@ -41,7 +41,7 @@ func get_mute() -> bool:
 	return _data.get_value(CONFIG_SECTION, "mute")
 
 
-func _load_data() -> void:
+func _load_data():
 	_data = ConfigFile.new()
 	var err: int = _data.load(DATA_PATH)
 	if err == OK:

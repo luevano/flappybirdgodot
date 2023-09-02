@@ -9,7 +9,7 @@ extends Node2D
 @export_category("Foreground")
 @export var foreground_orig: Sprite2D
 @export var foreground_textures: Array[CompressedTexture2D]
-@export_range(10.0, 100.0, 2.0) var FG_SPEED: float = 35.0
+@export_range(10.0, 100.0, 2.0) var FG_SPEED: float = 36.0
 
 # assumed both textures have the same size, at least on x
 @onready var size_x: float = background_textures[0].get_size().x

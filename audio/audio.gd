@@ -28,34 +28,34 @@ func _ready():
 	hit_sound.finished.connect(_on_HitSound_finished)
 
 
-func _on_set_mute(mute: bool) -> void:
+func _on_set_mute(mute: bool):
 	AudioServer.set_bus_mute(_bus, mute)
 	Data.set_mute(mute)
 	Data.save_data()
 
 
-func _on_set_volume(linear_volume: float) -> void:
+func _on_set_volume(linear_volume: float):
 	var db_volume: float = linear_to_db(linear_volume)
 	AudioServer.set_bus_volume_db(_bus, db_volume)
 	Data.set_volume(linear_volume)
 	Data.save_data()
 
 
-func _on_game_start() -> void:
+func _on_game_start():
 	start_sound.play()
 
 
-func _on_player_jump() -> void:
+func _on_player_jump():
 	jump_sound.play()
 
 
-func _on_player_score() -> void:
+func _on_player_score():
 	score_sound.play()
 
 
-func _on_player_collide() -> void:
+func _on_player_collide():
 	hit_sound.play()
 
 
-func _on_HitSound_finished() -> void:
+func _on_HitSound_finished():
 	dead_sound.play()

@@ -12,7 +12,7 @@ var last_collision: KinematicCollision2D
 var dead: bool = false
 
 
-func _ready() -> void:
+func _ready():
 	set_physics_process(false)
 	Event.game_start.connect(set_physics_process.bind(true))
 	Event.game_pause.connect(set_physics_process)
@@ -20,7 +20,7 @@ func _ready() -> void:
 	Event.player_collide.connect(_on_player_collide)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float):
 	velocity.y += GRAVITY * delta
 
 	if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("touch")) and not dead:
@@ -46,14 +46,14 @@ func _physics_process(delta: float) -> void:
 		Event.player_collide.emit()
 
 
-func _stop_sprite(stop: bool = true) -> void:
+func _stop_sprite(stop: bool = true):
 	if sprite.is_playing():
 		sprite.stop()
 	if sprite.frame != 0:
 		sprite.frame = 0
 
 
-func _on_player_collide() -> void:
+func _on_player_collide():
 	set_collision_mask_value(3, false)
 	dead = true
 	Event.player_death.emit()

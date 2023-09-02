@@ -27,7 +27,7 @@ var pipe_stack: Array
 var detector_offset: Vector2 = Vector2(0.0, (256.0 / 2.0) - (16.0 / 2.0))
 var detector_stack: Array
 
-func _ready() -> void:
+func _ready():
 	set_physics_process(false)
 	Event.game_start.connect(set_physics_process.bind(true))
 	Event.game_over.connect(set_physics_process.bind(false))
@@ -37,11 +37,11 @@ func _ready() -> void:
 	Event.pipe_started_colliding.connect(_on_pipe_started_colliding)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float):
 	move_local_x(- SPEED * delta)
 
 
-func _place_new_ground() -> void:
+func _place_new_ground():
 	var random_tile_index: int = randi_range(1, ground_tiles_amount)
 	var random_tile: Vector2i = Vector2i(random_tile_index, 5)
 	set_cell(0, new_tile_position, 0, random_tile)
@@ -49,13 +49,13 @@ func _place_new_ground() -> void:
 	new_tile_position += Vector2i.RIGHT
 
 
-func _remove_old_ground() -> void:
+func _remove_old_ground():
 	set_cell(0, old_tile_position, -1)
 	set_cell(0, old_tile_position + Vector2i.DOWN, -1)
 	old_tile_position += Vector2i.RIGHT
 
 
-func _place_new_pipe() -> void:
+func _place_new_pipe():
 	var random_pattern_index: int = randi() % (pipe_pattern_amount - 1)
 	var random_pattern: TileMapPattern = tile_set.get_pattern(random_pattern_index)
 	set_pattern(0, new_pipe_position, random_pattern)
@@ -69,7 +69,7 @@ func _place_new_pipe() -> void:
 	new_pipe_position += PIPE_SEP * Vector2i.RIGHT
 
 
-func _remove_old_pipe() -> void:
+func _remove_old_pipe():
 	var current_pipe_tile: Vector2i = pipe_stack.pop_front()
 	var c: int = 0
 	while c < _pipe_size:
@@ -83,7 +83,7 @@ func _remove_old_pipe() -> void:
 	detector.queue_free()
 
 
-func _on_ground_stopped_colliding() -> void:
+func _on_ground_stopped_colliding():
 	_place_new_ground()
 
 	tiles_since_last_pipe += 1
@@ -92,9 +92,9 @@ func _on_ground_stopped_colliding() -> void:
 		tiles_since_last_pipe = 0
 
 
-func _on_ground_started_colliding() -> void:
+func _on_ground_started_colliding():
 	_remove_old_ground()
 
 
-func _on_pipe_started_colliding() -> void:
+func _on_pipe_started_colliding():
 	_remove_old_pipe()
