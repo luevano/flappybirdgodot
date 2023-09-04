@@ -13,7 +13,8 @@ Originally made in *Godot 4.0 alpha 8* then backported to *Godot 3.5 rc 1* (`god
 
 # Credits
 
-- Sprites by [MegaCrash](https://megacrash.itch.io/): [flappy-bird-assets](https://megacrash.itch.io/flappy-bird-assets); just modified the names to be all lowercase because I like it that way.
+- Game sprites by [MegaCrash](https://megacrash.itch.io/): [Flappy Bird Assets](https://megacrash.itch.io/flappy-bird-assets); changed file names.
+- Icons/GUI sprites by [Crusenho](https://crusenho.itch.io/): [Icons Essential Pack](https://crusenho.itch.io/icons-essential-pack-free-icons) and [Complete GUI Essential Pack](https://crusenho.itch.io/complete-gui-essential-pack) (free version); modulated the colors.
 - Font by [PoppyWorks](https://poppyworks.itch.io/): [Silver](https://poppyworks.itch.io/silver).
 - Sound by [meeq](https://github.com/meeq): [FlappyBird-N64](https://github.com/meeq/FlappyBird-N64), which at the same looks like it's taken from [101soundboards.com](https://www.101soundboards.com/boards/10178-flappy-bird-sounds), which either way at the end of the day the respective credit goes to [.Gears](https://dotgears.com/), the original owners of the SFX and game idea.
 
