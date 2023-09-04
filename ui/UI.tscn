@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://lwr786l78x8t" path="res://ui/volume_button/VolumeButton.tscn" id="3_0rkh0"]
 [ext_resource type="PackedScene" uid="uid://d3dtvj6vhm53" path="res://ui/volume_slider/VolumeSlider.tscn" id="3_lcuyv"]
 [ext_resource type="FontFile" uid="uid://dx84vyfn41p2j" path="res://ui/silver_label/Silver.ttf" id="5_nt015"]
-[ext_resource type="PackedScene" uid="uid://cqmb8rxsx620d" path="res://ui/game_over_panel/GameOverPanel.tscn" id="6_j1i80"]
+[ext_resource type="PackedScene" uid="uid://df0v12vxtuaw2" path="res://ui/game_over_panel/GameOverPanel.tscn" id="6_j1i80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njvdr"]
 size = Vector2(144, 200)

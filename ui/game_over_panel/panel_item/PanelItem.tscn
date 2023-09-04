@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm0ejsxdqqh1i"]
+[gd_scene load_steps=7 format=3 uid="uid://jnspp4y16e0a"]
 
 [ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/silver_label/SilverLabel.tscn" id="1_7htlp"]
 [ext_resource type="Script" path="res://ui/game_over_panel/panel_item/panel_item.gd" id="1_t4p6j"]
