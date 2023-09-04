@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cm0ejsxdqqh1i"]
 
 [ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/silver_label/SilverLabel.tscn" id="1_7htlp"]
-[ext_resource type="Script" path="res://ui/game_over_panel/panel_item.gd" id="1_t4p6j"]
-[ext_resource type="Texture2D" uid="uid://rwcxheae6dc8" path="res://ui/game_over_panel/sprites/prev.png" id="3_6njx5"]
-[ext_resource type="Texture2D" uid="uid://tebyr51cb2mr" path="res://ui/game_over_panel/sprites/next.png" id="4_33owf"]
-[ext_resource type="Texture2D" uid="uid://b1b46ixc5ow3b" path="res://ui/game_over_panel/sprites/prev_pressed.png" id="4_cobgw"]
-[ext_resource type="Texture2D" uid="uid://bh3f42ylri3nn" path="res://ui/game_over_panel/sprites/next_pressed.png" id="6_u7qlm"]
+[ext_resource type="Script" path="res://ui/game_over_panel/panel_item/panel_item.gd" id="1_t4p6j"]
+[ext_resource type="Texture2D" uid="uid://rwcxheae6dc8" path="res://ui/game_over_panel/panel_item/sprites/prev.png" id="3_6njx5"]
+[ext_resource type="Texture2D" uid="uid://tebyr51cb2mr" path="res://ui/game_over_panel/panel_item/sprites/next.png" id="4_33owf"]
+[ext_resource type="Texture2D" uid="uid://b1b46ixc5ow3b" path="res://ui/game_over_panel/panel_item/sprites/prev_pressed.png" id="4_cobgw"]
+[ext_resource type="Texture2D" uid="uid://bh3f42ylri3nn" path="res://ui/game_over_panel/panel_item/sprites/next_pressed.png" id="6_u7qlm"]
 
 [node name="PanelItem" type="HBoxContainer"]
 script = ExtResource("1_t4p6j")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tebyr51cb2mr"
-path="res://.godot/imported/next.png-0487986615a5b91a192daf4db43a041b.ctex"
+path="res://.godot/imported/next.png-d471aca20b227f1fcea9cef0c6f88413.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/game_over_panel/sprites/next.png"
-dest_files=["res://.godot/imported/next.png-0487986615a5b91a192daf4db43a041b.ctex"]
+source_file="res://ui/game_over_panel/panel_item/sprites/next.png"
+dest_files=["res://.godot/imported/next.png-d471aca20b227f1fcea9cef0c6f88413.ctex"]
 
 [params]
 

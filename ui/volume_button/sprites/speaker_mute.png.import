@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rwcxheae6dc8"
-path="res://.godot/imported/prev.png-c5b046950dd59e5bdaa2d8dbcf5593e4.ctex"
+uid="uid://bi0lsbh2tsmpy"
+path="res://.godot/imported/speaker_mute.png-a8b9db6a5afa4b1a4ead580e3a4faa48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/game_over_panel/sprites/prev.png"
-dest_files=["res://.godot/imported/prev.png-c5b046950dd59e5bdaa2d8dbcf5593e4.ctex"]
+source_file="res://ui/volume_button/sprites/speaker_mute.png"
+dest_files=["res://.godot/imported/speaker_mute.png-a8b9db6a5afa4b1a4ead580e3a4faa48.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh3f42ylri3nn"
-path="res://.godot/imported/next_pressed.png-fc855748b124c4f696b0b2810802db7e.ctex"
+uid="uid://b1b46ixc5ow3b"
+path="res://.godot/imported/prev_pressed.png-77c39cc9a61b8befad09e9a936e2e23e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/game_over_panel/sprites/next_pressed.png"
-dest_files=["res://.godot/imported/next_pressed.png-fc855748b124c4f696b0b2810802db7e.ctex"]
+source_file="res://ui/game_over_panel/panel_item/sprites/prev_pressed.png"
+dest_files=["res://.godot/imported/prev_pressed.png-77c39cc9a61b8befad09e9a936e2e23e.ctex"]
 
 [params]
 

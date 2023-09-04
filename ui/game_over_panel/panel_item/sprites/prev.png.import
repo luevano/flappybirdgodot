@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cheeos7mewt7t"
-path="res://.godot/imported/icon_volume_slashed.png-7957be792960722879fdd4ed437de16f.ctex"
+uid="uid://rwcxheae6dc8"
+path="res://.godot/imported/prev.png-0d3d03e2c73ed90f1f5e29b42ffed51d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/volume_button/sprites/icon_volume_slashed.png"
-dest_files=["res://.godot/imported/icon_volume_slashed.png-7957be792960722879fdd4ed437de16f.ctex"]
+source_file="res://ui/game_over_panel/panel_item/sprites/prev.png"
+dest_files=["res://.godot/imported/prev.png-0d3d03e2c73ed90f1f5e29b42ffed51d.ctex"]
 
 [params]
 
