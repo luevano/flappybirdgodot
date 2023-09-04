@@ -12,10 +12,11 @@ extends Node2D
 @export_range(10.0, 100.0, 2.0) var FG_SPEED: float = 36.0
 
 # assumed both textures have the same size, at least on x
-@onready var size_x: float = background_textures[0].get_size().x
+var size_x: float
 var backgrounds: Array[Sprite2D]
 var foregrounds: Array[Sprite2D]
 var init_x: float
+var itexture: int = 0
 # I want this to return 0 on int(bg_0_first),
 #	this determines the position of the bg 0 in the scrolling
 var bg_0_first: bool = !true
@@ -27,9 +28,13 @@ func _ready():
 	Event.game_start.connect(set_process.bind(true))
 	Event.game_over.connect(set_process.bind(false))
 	Event.game_pause.connect(set_process)
+	Event.bg_prev_sprite.connect(_on_bg_prev_sprite)
+	Event.bg_next_sprite.connect(_on_bg_next_sprite)
 
-	background_orig.texture = background_textures[0]
-	foreground_orig.texture = foreground_textures[0]
+	background_orig.texture = background_textures[itexture]
+	foreground_orig.texture = foreground_textures[itexture]
+
+	size_x = background_textures[0].get_size().x
 	init_x = (size_x / 2.0) - (Global.INIT_WINDOW_SIZE.x / 2.0)
 
 	backgrounds = _create_sprites(background_orig)
@@ -69,3 +74,29 @@ func _reposition_sprites(sprites: Array[Sprite2D], ifirst: bool) -> bool:
 		# update indexes
 		return !ifirst
 	return ifirst
+
+
+func _get_new_sprite_index(index: int) -> int:
+	return clampi(index, 0, background_textures.size() - 1)
+
+
+func _set_sprites_index(index: int) -> int:
+	var new_index: int = _get_new_sprite_index(index)
+	if new_index == itexture:
+		return new_index
+
+	for bg in backgrounds:
+		bg.texture = background_textures[new_index]
+	for fg in foregrounds:
+		fg.texture = foreground_textures[new_index]
+
+	itexture = new_index
+	return new_index
+
+
+func _on_bg_prev_sprite():
+	Event.bg_new_sprite.emit(_set_sprites_index(itexture - 1))
+
+
+func _on_bg_next_sprite():
+	Event.bg_new_sprite.emit(_set_sprites_index(itexture + 1))

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqmb8rxsx620d"]
+
+[ext_resource type="PackedScene" uid="uid://cm0ejsxdqqh1i" path="res://ui/game_over_panel/PanelItem.tscn" id="1_plki8"]
+[ext_resource type="Texture2D" uid="uid://bf7385xd2yael" path="res://ui/game_over_panel/sprites/frame.png" id="1_rnom3"]
+[ext_resource type="PackedScene" uid="uid://ci2aey7acs5n5" path="res://ui/silver_label/SilverLabel.tscn" id="1_uue2f"]
+[ext_resource type="Script" path="res://ui/game_over_panel/game_over_panel.gd" id="2_5k8rl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bb7s0"]
+texture = ExtResource("1_rnom3")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[node name="GameOverPanel" type="PanelContainer" node_paths=PackedStringArray("high_score_label", "bird_selection", "bg_selection")]
+theme_override_styles/panel = SubResource("StyleBoxTexture_bb7s0")
+script = ExtResource("2_5k8rl")
+high_score_label = NodePath("Margin/VBox/HighScore")
+bird_selection = NodePath("Margin/VBox/BirdSelection")
+bg_selection = NodePath("Margin/VBox/BackgroundSelection")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="HighScore" parent="Margin/VBox" instance=ExtResource("1_uue2f")]
+layout_mode = 2
+text = "High score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BirdSelection" parent="Margin/VBox" instance=ExtResource("1_plki8")]
+layout_mode = 2
+text = "Bird"
+
+[node name="BackgroundSelection" parent="Margin/VBox" instance=ExtResource("1_plki8")]
+layout_mode = 2
+text = "Background"

@@ -9,6 +9,7 @@ var is_game_over: bool = false
 
 
 func _ready():
+	Event.game_restart.connect(_on_game_restart)
 	Event.player_death.connect(_on_player_death)
 	Event.player_score.connect(_on_player_score)
 
@@ -23,9 +24,12 @@ func _input(event: InputEvent):
 		is_game_running = !is_game_running
 		Event.game_pause.emit(is_game_running)
 
-	if (event.is_action_pressed("restart") or
-		(is_game_over and event.is_action_pressed("touch"))):
-		get_tree().reload_current_scene()
+	if event.is_action_pressed("restart"):
+		Event.game_restart.emit()
+
+
+func _on_game_restart():
+	get_tree().reload_current_scene()
 
 
 func _on_player_death():
