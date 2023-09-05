@@ -7,18 +7,26 @@
 [ext_resource type="Texture2D" uid="uid://b1b46ixc5ow3b" path="res://ui/game_over_panel/panel_item/sprites/prev_pressed.png" id="4_cobgw"]
 [ext_resource type="Texture2D" uid="uid://bh3f42ylri3nn" path="res://ui/game_over_panel/panel_item/sprites/next_pressed.png" id="6_u7qlm"]
 
-[node name="PanelItem" type="HBoxContainer"]
+[node name="PanelItem" type="HBoxContainer" node_paths=PackedStringArray("label", "selection_label", "prev", "next")]
 script = ExtResource("1_t4p6j")
+label = NodePath("Label")
+selection_label = NodePath("Selection")
+prev = NodePath("CenterPrev/Prev")
+next = NodePath("CenterNext/Next")
 
 [node name="Label" parent="." instance=ExtResource("1_7htlp")]
 layout_mode = 2
 text = "Temp text"
+vertical_alignment = 2
 
 [node name="Sep" type="CenterContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Prev" type="TextureButton" parent="."]
+[node name="CenterPrev" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="Prev" type="TextureButton" parent="CenterPrev"]
 layout_mode = 2
 texture_normal = ExtResource("3_6njx5")
 texture_pressed = ExtResource("4_cobgw")
@@ -26,8 +34,12 @@ texture_pressed = ExtResource("4_cobgw")
 [node name="Selection" parent="." instance=ExtResource("1_7htlp")]
 layout_mode = 2
 text = "1"
+vertical_alignment = 2
 
-[node name="Next" type="TextureButton" parent="."]
+[node name="CenterNext" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="Next" type="TextureButton" parent="CenterNext"]
 layout_mode = 2
 texture_normal = ExtResource("4_33owf")
 texture_pressed = ExtResource("6_u7qlm")

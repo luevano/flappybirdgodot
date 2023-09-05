@@ -4,13 +4,12 @@ extends HBoxContainer
 signal prev_pressed
 signal next_pressed
 
+@export var label: Label
+@export var selection_label: Label
+@export var prev: TextureButton
+@export var next: TextureButton
 @export var text: String = "Test"
 @export var selection_text: String = "1"
-
-@onready var label: Label = $Label
-@onready var selection_label: Label = $Selection
-@onready var prev: TextureButton = $Prev
-@onready var next: TextureButton = $Next
 
 var _opaque: Color = Color(1, 1, 1, 1)
 var _translucent: Color = Color(1, 1, 1, 0.75)
