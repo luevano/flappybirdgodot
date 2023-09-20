@@ -6,6 +6,8 @@ extends PanelContainer
 @export var bg_selection: PanelItem
 
 @onready var _initial_high_score: int = Data.get_high_score()
+@onready var _bird: int = Data.get_bird()
+@onready var _bg: int = Data.get_background()
 
 func _ready():
 	Event.new_score.connect(_on_new_score)
@@ -16,7 +18,9 @@ func _ready():
 	bg_selection.prev_pressed.connect(_on_bg_prev_pressed)
 	bg_selection.next_pressed.connect(_on_bg_next_pressed)
 
-	high_score_label.set_text(Global.HS_TEXT % _initial_high_score)
+	_on_new_score(-1, _initial_high_score)
+	_on_bird_new_sprite(_bird)
+	_on_bg_new_sprite(_bg)
 
 
 func _on_new_score(score: int, high_score: int):

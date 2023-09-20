@@ -16,12 +16,12 @@ var size_x: float
 var backgrounds: Array[Sprite2D]
 var foregrounds: Array[Sprite2D]
 var init_x: float
-var itexture: int = 0
 # I want this to return 0 on int(bg_0_first),
 #	this determines the position of the bg 0 in the scrolling
 var bg_0_first: bool = !true
 var fg_0_first: bool = !true
 
+@onready var _bg: int = Data.get_background()
 
 func _ready():
 	set_process(false)
@@ -31,8 +31,8 @@ func _ready():
 	Event.bg_prev_sprite.connect(_on_bg_prev_sprite)
 	Event.bg_next_sprite.connect(_on_bg_next_sprite)
 
-	background_orig.texture = background_textures[itexture]
-	foreground_orig.texture = foreground_textures[itexture]
+	background_orig.texture = background_textures[_bg]
+	foreground_orig.texture = foreground_textures[_bg]
 
 	size_x = background_textures[0].get_size().x
 	init_x = (size_x / 2.0) - (Global.INIT_WINDOW_SIZE.x / 2.0)
@@ -82,7 +82,7 @@ func _get_new_sprite_index(index: int) -> int:
 
 func _set_sprites_index(index: int) -> int:
 	var new_index: int = _get_new_sprite_index(index)
-	if new_index == itexture:
+	if new_index == _bg:
 		return new_index
 
 	for bg in backgrounds:
@@ -90,13 +90,15 @@ func _set_sprites_index(index: int) -> int:
 	for fg in foregrounds:
 		fg.texture = foreground_textures[new_index]
 
-	itexture = new_index
+	_bg = new_index
+	Data.set_background(_bg)
+	Data.save()
 	return new_index
 
 
 func _on_bg_prev_sprite():
-	Event.bg_new_sprite.emit(_set_sprites_index(itexture - 1))
+	Event.bg_new_sprite.emit(_set_sprites_index(_bg - 1))
 
 
 func _on_bg_next_sprite():
-	Event.bg_new_sprite.emit(_set_sprites_index(itexture + 1))
+	Event.bg_new_sprite.emit(_set_sprites_index(_bg + 1))

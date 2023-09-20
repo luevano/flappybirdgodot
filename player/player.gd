@@ -6,13 +6,13 @@ extends CharacterBody2D
 @export_range(1.0, 100.0, 1.0) var DEATH_JUMP_VELOCITY: float = 150.0
 @export_range(10.0, 1000.0, 1.0) var GRAVITY: float = 500.0
 
-@onready var sprite: AnimatedSprite2D = $Sprite2D
-
 # needs to match the animation sprite names
 var animations: Array[String] = ["bird_1", "bird_2", "bird_3"]
-var ianim: int = 0
 var last_collision: KinematicCollision2D
 var dead: bool = false
+
+@onready var sprite: AnimatedSprite2D = $Sprite2D
+@onready var _bird: int = Data.get_bird()
 
 
 func _ready():
@@ -23,6 +23,8 @@ func _ready():
 	Event.player_collide.connect(_on_player_collide)
 	Event.bird_prev_sprite.connect(_on_bird_prev_sprite)
 	Event.bird_next_sprite.connect(_on_bird_next_sprite)
+
+	sprite.set_animation(animations[_bird])
 
 
 func _physics_process(delta: float):
@@ -73,18 +75,20 @@ func _get_new_anim_index(index: int) -> int:
 
 func _set_sprites_index(index: int) -> int:
 	var new_index: int = _get_new_anim_index(index)
-	if new_index == ianim:
+	if new_index == _bird:
 		return new_index
 
 	sprite.set_animation(animations[new_index])
 
-	ianim = new_index
+	_bird = new_index
+	Data.set_bird(_bird)
+	Data.save()
 	return new_index
 
 
 func _on_bird_prev_sprite():
-	Event.bird_new_sprite.emit(_set_sprites_index(ianim - 1))
+	Event.bird_new_sprite.emit(_set_sprites_index(_bird - 1))
 
 
 func _on_bird_next_sprite():
-	Event.bird_new_sprite.emit(_set_sprites_index(ianim + 1))
+	Event.bird_new_sprite.emit(_set_sprites_index(_bird + 1))

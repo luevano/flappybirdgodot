@@ -41,6 +41,6 @@ func _on_player_score():
 	score += 1
 	if score > high_score:
 		high_score = score
-		Data.set_new_high_score(high_score)
-		Data.save_data()
+		Data.set_high_score(high_score)
+		Data.save()
 	Event.new_score.emit(score, high_score)

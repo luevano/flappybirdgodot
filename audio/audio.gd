@@ -31,11 +31,11 @@ func _ready():
 func _on_set_mute(mute: bool):
 	AudioServer.set_bus_mute(_bus, mute)
 	Data.set_mute(mute)
-	Data.save_data()
+	Data.save()
 
 
 func _on_set_volume(linear_volume: float):
 	var db_volume: float = linear_to_db(linear_volume)
 	AudioServer.set_bus_volume_db(_bus, db_volume)
 	Data.set_volume(linear_volume)
-	Data.save_data()
+	Data.save()
