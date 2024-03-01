@@ -11,7 +11,9 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
 
-[node name="Background" parent="." instance=ExtResource("4_c8ufw")]
+[node name="Background" parent="." node_paths=PackedStringArray("background_orig", "foreground_orig") instance=ExtResource("4_c8ufw")]
+background_orig = NodePath("Background")
+foreground_orig = NodePath("Foreground")
 
 [node name="WorldTileMap" parent="." instance=ExtResource("5_xr1hx")]
 
@@ -21,6 +23,12 @@ script = ExtResource("1")
 
 [node name="Camera3D" type="Camera2D" parent="."]
 
-[node name="UI" parent="." instance=ExtResource("3")]
+[node name="UI" parent="." node_paths=PackedStringArray("version", "score_label", "pregame_start", "high_score", "game_over_panel", "touch") instance=ExtResource("3")]
+version = NodePath("Margin/VBox/HBoxVersion/Version")
+score_label = NodePath("Margin/VBox/VBox/Score")
+pregame_start = NodePath("Margin/VBox/VBox/PreGameStart")
+high_score = NodePath("Margin/VBox/VBox/PreGameStart/HighScore")
+game_over_panel = NodePath("Margin/VBox/VBox/GameOverPanel")
+touch = NodePath("Touch")
 
 [node name="Audio" parent="." instance=ExtResource("4_ehoq0")]

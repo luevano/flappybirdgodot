@@ -35,10 +35,18 @@ text = "Highscore: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BirdSelection" parent="Margin/VBox" instance=ExtResource("2_ajbdl")]
+[node name="BirdSelection" parent="Margin/VBox" node_paths=PackedStringArray("label", "selection_label", "prev", "next") instance=ExtResource("2_ajbdl")]
 layout_mode = 2
+label = NodePath("Label")
+selection_label = NodePath("Selection")
+prev = NodePath("CenterPrev/Prev")
+next = NodePath("CenterNext/Next")
 text = "Bird"
 
-[node name="BackgroundSelection" parent="Margin/VBox" instance=ExtResource("2_ajbdl")]
+[node name="BackgroundSelection" parent="Margin/VBox" node_paths=PackedStringArray("label", "selection_label", "prev", "next") instance=ExtResource("2_ajbdl")]
 layout_mode = 2
+label = NodePath("Label")
+selection_label = NodePath("Selection")
+prev = NodePath("CenterPrev/Prev")
+next = NodePath("CenterNext/Next")
 text = "Background"

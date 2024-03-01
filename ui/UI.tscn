@@ -89,8 +89,11 @@ text = "Press <space> to start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOverPanel" parent="Margin/VBox/VBox" instance=ExtResource("6_j1i80")]
+[node name="GameOverPanel" parent="Margin/VBox/VBox" node_paths=PackedStringArray("high_score_label", "bird_selection", "bg_selection") instance=ExtResource("6_j1i80")]
 layout_mode = 2
+high_score_label = NodePath("Margin/VBox/Highscore")
+bird_selection = NodePath("Margin/VBox/BirdSelection")
+bg_selection = NodePath("Margin/VBox/BackgroundSelection")
 
 [node name="HBoxVersion" type="HBoxContainer" parent="Margin/VBox"]
 layout_mode = 2
