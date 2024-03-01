@@ -7,6 +7,7 @@ extends Resource
 @export var bird: int
 @export var background: int
 
+
 func _init():
 	high_score = 0
 	volume = 0.5

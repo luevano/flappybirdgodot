@@ -4,12 +4,12 @@ extends Node2D
 @export_category("Background")
 @export var background_orig: Sprite2D
 @export var background_textures: Array[CompressedTexture2D]
-@export_range(10.0, 100.0, 2.0) var BG_SPEED: float = 20.0
+@export_range(10.0, 100.0, 2.0) var bg_speed: float = 20.0
 
 @export_category("Foreground")
 @export var foreground_orig: Sprite2D
 @export var foreground_textures: Array[CompressedTexture2D]
-@export_range(10.0, 100.0, 2.0) var FG_SPEED: float = 36.0
+@export_range(10.0, 100.0, 2.0) var fg_speed: float = 36.0
 
 # assumed both textures have the same size, at least on x
 var size_x: float
@@ -17,11 +17,12 @@ var backgrounds: Array[Sprite2D]
 var foregrounds: Array[Sprite2D]
 var init_x: float
 # I want this to return 0 on int(bg_0_first),
-#	this determines the position of the bg 0 in the scrolling
+# this determines the position of the bg 0 in the scrolling
 var bg_0_first: bool = !true
 var fg_0_first: bool = !true
 
 @onready var _bg: int = Data.get_background()
+
 
 func _ready():
 	set_process(false)
@@ -41,9 +42,9 @@ func _ready():
 	foregrounds = _create_sprites(foreground_orig)
 
 
-func _process(delta: float):
-	_move_sprites(backgrounds, BG_SPEED)
-	_move_sprites(foregrounds, FG_SPEED)
+func _process(_delta: float):
+	_move_sprites(backgrounds, bg_speed)
+	_move_sprites(foregrounds, fg_speed)
 	bg_0_first = _reposition_sprites(backgrounds, bg_0_first)
 	fg_0_first = _reposition_sprites(foregrounds, fg_0_first)
 
@@ -64,7 +65,7 @@ func _create_sprites(sprite: Sprite2D) -> Array[Sprite2D]:
 
 func _move_sprites(sprites: Array[Sprite2D], speed: float):
 	for sprite in sprites:
-		sprite.move_local_x(- speed * get_process_delta_time())
+		sprite.move_local_x(-speed * get_process_delta_time())
 
 
 func _reposition_sprites(sprites: Array[Sprite2D], ifirst: bool) -> bool:

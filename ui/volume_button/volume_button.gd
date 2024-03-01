@@ -1,10 +1,10 @@
 class_name VolumeButton
 extends TextureButton
 
-@onready var _mute: bool = Data.get_mute()
-
 var _opaque: Color = Color(1, 1, 1, 1)
 var _translucent: Color = Color(1, 1, 1, 0.5)
+
+@onready var _mute: bool = Data.get_mute()
 
 
 func _ready():

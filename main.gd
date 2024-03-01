@@ -1,11 +1,11 @@
 class_name Main
 extends Node2D
 
-@onready var high_score: int = Data.get_high_score()
 var score: int = 0
-
 var is_game_running: bool = false
 var is_game_over: bool = false
+
+@onready var high_score: int = Data.get_high_score()
 
 
 func _ready():
@@ -15,11 +15,13 @@ func _ready():
 
 
 func _input(event: InputEvent):
-	if not is_game_running and (event.is_action_pressed("jump") or
-								event.is_action_pressed("touch")):
+	if (
+		not is_game_running
+		and (event.is_action_pressed("jump") or event.is_action_pressed("touch"))
+	):
 		is_game_running = true
 		Event.game_start.emit()
-	
+
 	if not is_game_over and event.is_action_pressed("pause"):
 		is_game_running = !is_game_running
 		Event.game_pause.emit(is_game_running)

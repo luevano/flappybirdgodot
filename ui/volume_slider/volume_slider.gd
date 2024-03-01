@@ -11,4 +11,4 @@ func _ready():
 
 func _on_value_changed(_value: float):
 	Event.set_volume.emit(_value)
-	release_focus()	
+	release_focus()

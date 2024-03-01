@@ -9,6 +9,7 @@ extends PanelContainer
 @onready var _bird: int = Data.get_bird()
 @onready var _bg: int = Data.get_background()
 
+
 func _ready():
 	Event.new_score.connect(_on_new_score)
 	Event.bird_new_sprite.connect(_on_bird_new_sprite)
@@ -23,7 +24,7 @@ func _ready():
 	_on_bg_new_sprite(_bg)
 
 
-func _on_new_score(score: int, high_score: int):
+func _on_new_score(_score: int, high_score: int):
 	high_score_label.set_text(Global.HS_TEXT % high_score)
 
 

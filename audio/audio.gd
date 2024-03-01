@@ -3,13 +3,12 @@ extends Node2D
 
 @export var audio_bus_name: String = "Master"
 
-@onready var _bus: int = AudioServer.get_bus_index(audio_bus_name)
 @onready var start_sound: AudioStreamPlayer = $StartSound
 @onready var score_sound: AudioStreamPlayer = $ScoreSound
 @onready var jump_sound: AudioStreamPlayer = $JumpSound
 @onready var hit_sound: AudioStreamPlayer = $HitSound
 @onready var dead_sound: AudioStreamPlayer = $DeadSound
-
+@onready var _bus: int = AudioServer.get_bus_index(audio_bus_name)
 @onready var _mute: bool = Data.get_mute()
 @onready var _volume: float = Data.get_volume()
 

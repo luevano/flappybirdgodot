@@ -1,31 +1,30 @@
 class_name WorldTileMap
 extends TileMap
 
-@export_range(1.0, 150.0, 1.0) var SPEED: float = 60.0
-@export_range(2, 20, 2) var PIPE_SEP: int = 6
+# old_tile is the actual first tile, whereas the new_tile_position
+#	is the the next empty tile; these also correspond to the top tile
+const _INITIAL_OLD_TILE_X: int = -8
+const _INITIAL_NEW_TILE_X: int = 11
+const _PIPE_SIZE: int = 16
+const _GROUND_LEVEL: int = 7
+const _PIPE_LEVEL_Y: int = -_PIPE_SIZE + _GROUND_LEVEL
+const _INITIAL_NEW_PIPE_X: int = 11
+
+@export_range(1.0, 150.0, 1.0) var speed: float = 60.0
+@export_range(2, 20, 2) var pipe_sep: int = 6
 @export var detector_scene: PackedScene
 
 var ground_tiles_amount: int = 3
 var ground_bottom_tile: Vector2i = Vector2i(4, 5)
 var pipe_pattern_amount: int = 6
-var tiles_since_last_pipe: int = PIPE_SEP - 1
-
-# old_tile is the actual first tile, whereas the new_tile_position
-#	is the the next empty tile; these also correspond to the top tile
-const _initial_old_tile_x: int = -8
-const _initial_new_tile_x: int = 11
-var old_tile_position: Vector2i = Vector2i(_initial_old_tile_x, _ground_level)
-var new_tile_position: Vector2i = Vector2i(_initial_new_tile_x, _ground_level)
-
-const _pipe_size: int = 16
-const _ground_level: int = 7
-const _pipe_level_y: int = - _pipe_size + _ground_level
-const _initial_new_pipe_x: int = 11
-var new_pipe_position: Vector2i = Vector2i(_initial_new_pipe_x, _pipe_level_y)
+var tiles_since_last_pipe: int = pipe_sep - 1
+var old_tile_position: Vector2i = Vector2i(_INITIAL_OLD_TILE_X, _GROUND_LEVEL)
+var new_tile_position: Vector2i = Vector2i(_INITIAL_NEW_TILE_X, _GROUND_LEVEL)
+var new_pipe_position: Vector2i = Vector2i(_INITIAL_NEW_PIPE_X, _PIPE_LEVEL_Y)
 var pipe_stack: Array
-
 var detector_offset: Vector2 = Vector2(0.0, (256.0 / 2.0) - (16.0 / 2.0))
 var detector_stack: Array
+
 
 func _ready():
 	set_physics_process(false)
@@ -38,7 +37,7 @@ func _ready():
 
 
 func _physics_process(delta: float):
-	move_local_x(- SPEED * delta)
+	move_local_x(-speed * delta)
 
 
 func _place_new_ground():
@@ -49,7 +48,7 @@ func _place_new_ground():
 	new_tile_position += Vector2i.RIGHT
 
 	tiles_since_last_pipe += 1
-	if tiles_since_last_pipe == PIPE_SEP:
+	if tiles_since_last_pipe == pipe_sep:
 		_place_new_pipe()
 		tiles_since_last_pipe = 0
 
@@ -71,13 +70,13 @@ func _place_new_pipe():
 	add_child(detector)
 
 	pipe_stack.append(new_pipe_position)
-	new_pipe_position += PIPE_SEP * Vector2i.RIGHT
+	new_pipe_position += pipe_sep * Vector2i.RIGHT
 
 
 func _remove_old_pipe():
 	var current_pipe_tile: Vector2i = pipe_stack.pop_front()
 	var c: int = 0
-	while c < _pipe_size:
+	while c < _PIPE_SIZE:
 		erase_cell(0, current_pipe_tile)
 		# needs to be DOWN because of inverted coordinates on y
 		current_pipe_tile += Vector2i.DOWN
